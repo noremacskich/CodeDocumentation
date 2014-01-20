@@ -1,0 +1,103 @@
+Official Function Comment Style
+------------------------
+------------------------
+
+/* Function:	Copy and paste the function call
+ * Description:	What does this function do in simple terms?
+ * 				This is a multi-line description of the function
+ * Assumptions:	You are assuming what when creating this function?  You assume that all input has
+ * 				already been validated?  
+ * Created :	##/##/#### : Name of Creator
+ * Modified:	##/##/#### : Name of Last Modifier
+ * Parameters:
+ *		parameter1	parameter type	What the variable does
+ *		var2	variable type	What the variable does
+ * Variables:
+ *		src	holds the snippet of code that points to the image to be displayed
+ *		alt	holds the snippet of code that shows the alternative text when hovering over it
+ *		clss	holds the snippet of code that names the class and id of this image tag (It's 
+ *				Hardcoded)
+ *		img	Combines everything above.
+ * Returns:
+ *		<img src="images/profiles/1.png" alt="Noremac Skich" id="MemImage" class="MemTile" />
+ */
+function MemberImg($FirstName, $LastName, $StudentID, $ImagePath){
+
+	// We have the info, lets format it, and return the image for html formatting.
+	
+	// Lets generate the entire source snippet for the image line
+	$src = 'src="' . $ImagePath . '/' . $StudentID . '"';
+	// This variable should now look something like this:
+	// src="images/profiles/1.png"
+	
+	// Next we to generate the entire alternative text snippet for the image line
+	$alt = 'alt="' . $FirstName . ' ' . $LastName . '"';
+	// This varible should now look something like this:
+	// alt="Noremac Skich"
+	
+	// Now lets create the class name snippet
+	$clss = 'id="MemImage" class="MemTile"';
+	// This varible should now look something like this:
+	// id="MemImage" class="MemTile"
+
+	// Finally, lets combine them all together
+	$img = '<img ' . $src . ' ' . $alt . ' ' . $clss . '/>\n';
+	// This is what the final code snippet should look like:
+	// <img src="images/profiles/1.png" alt="Noremac Skich" class="MemTile" />
+	
+	// And we now return the string
+	return $img;
+}
+
+
+/* Function:	MemberImg($FirstName, $LastName, $StudentID, $ImagePath)
+ * Description:	This function will spit out the necessary html to display a member Image
+ * Assumptions:	None
+ * Created :	11/09/2012 : NoremacSkich
+ * Modified:	12/24/2012 : NoremacSkich
+ * Parameters:
+ *		FirstName	string	This is the first name of the Person.
+ *		LastName	string	This is the last name of the Person.
+ *		StudentID	integer	This will be used for the filename of the image.
+ *		ImagePath	string	This is the path to the directory holding all of the profile 
+ *							pictures.
+ * Variables:
+ *		src	holds the snippet of code that points to the image to be displayed
+ *		alt	holds the snippet of code that shows the alternative text when hovering over it
+ *		clss	holds the snippet of code that names the class and id of this image tag (It's 
+ *				Hardcoded)
+ *		img	Combines everything above.
+ * Returns:
+ *		<img src="images/profiles/1.png" alt="Noremac Skich" id="MemImage" class="MemTile" />
+ */
+function MemberImg($FirstName, $LastName, $StudentID, $ImagePath){
+
+	// We have the info, lets format it, and return the image for html formatting.
+	
+	// Lets generate the entire source snippet for the image line
+	$src = 'src="' . $ImagePath . '/' . $StudentID . '"';
+	// This variable should now look something like this:
+	// src="images/profiles/1.png"
+	
+	// Next we to generate the entire alternative text snippet for the image line
+	$alt = 'alt="' . $FirstName . ' ' . $LastName . '"';
+	// This varible should now look something like this:
+	// alt="Noremac Skich"
+	
+	// Now lets create the class name snippet
+	$clss = 'id="MemImage" class="MemTile"';
+	// This varible should now look something like this:
+	// id="MemImage" class="MemTile"
+
+	// Finally, lets combine them all together
+	$img = '<img ' . $src . ' ' . $alt . ' ' . $clss . '/>\n';
+	// This is what the final code snippet should look like:
+	// <img src="images/profiles/1.png" alt="Noremac Skich" class="MemTile" />
+	
+	// And we now return the string
+	return $img;
+}
+
+------------------------
+------------------------
+Official Function Comment Style

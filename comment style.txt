@@ -1,0 +1,654 @@
+Official commit style
+------------------------
+------------------------
+
+##/##/####
+##:## ?m ------------------------
+
+Created:
+1	path/to/file.ext
+2	folder
+3	path/to/file.ext : function name
+4	path/to/file.ext : regex
+
+Reasons:
+1	Description of what the file is supposed to have
+2	what should go into the the folder?
+3	Description of what the function does
+4	Explain what the regex primarily does.  Show what it does 
+	in the info section
+
+--------------
+
+Deleted:
+1	path/to/file.ext
+2	folder
+3	path/to/file.ext : function name
+4	path/to/file.ext : regex
+
+Reasons:
+5-8	Why did you delete this?  Was it depreciated? If so, why?
+	did you come up with a better way of doing it? Explain.
+
+--------------
+
+Moved:
+1	path/to/file.ext -> path2/to/file.ext
+2	folder -> folder2
+3	path/to/file.ext : function name -> path/file.ext
+4	from/this/path -> to/this/path
+5	^	file1.ext
+6	^	file2.ext
+7	^	file3.ext
+
+
+Reasons:
+1	
+2	
+3	Did moving the function to the file make more sense?  Why?
+4-7	Do these files need to stay together?  Do they need . . .	
+
+--------------
+Renamed:
+1	file.ext -> file2.ext
+2	file.ext : function -> function2
+
+Reasons:
+1	Does the new name make more sense?  New name fit the naming scheme better?
+
+--------------
+
+Other:
+	Regex:
+		(\d?\d):(\d\d)([A|P])M
+	String:
+		19:00PM
+	Captured groups:
+		0: "19:00PM"
+		1: "19"
+		2: "00"
+		3: "P"
+		
+
+##:## ?m ------------------------
+
+------------------------
+------------------------
+End Official Commit Style
+
+
+Official Function Comments
+------------------------
+------------------------
+
+/* @function copy the function call and paste here
+ * 	^What will this function do?
+ *
+ * @requires Does this function rely on any libraries or packages?
+ *
+ * @usedFunctions list out all the functions that are used. This is optional
+ *
+ * @param Param Name | Variable Type | Optional
+ * 		^	Describe what the parameter is for.  If optional isn't stated, then it is assumed that the
+ * 			parameter is required.  If it is stated, you must list what the default value or 
+ * 			behaviour is below.
+ * 		^	This is where you state the default value or behaviour if the optional tag is stated.  If
+ *			it is not stated, then you omit this tag.
+ *
+ * @Return State what is returned, or what is done (eg echo'd something to the client etc.) 
+ *			This is optional. If it returns a variable, then use the same format as the parameters.
+ *			
+ * @Todo <Github Name> What still needs to be done with this function. This is optional.
+ * 
+ * @Note <Github Name> Any else that should be stated?
+ */
+
+
+/*
+ * @function Button($text='Button', $link='#', $Icon='')
+ * 	^This will spit out the html for a new button for jqueryUI.
+ *
+ * @requires JqueryUI
+ *
+ * @param $txt | String
+ * 		^This is what the button will say
+ * 		^Default: "Button"
+ * 
+ * @param $link | HyperLink
+ * 		^This is where the button will send you
+ * 		^Default: "#"
+ * 
+ * @param $Icon | File
+ * 		^If you want an Icon, you put it here
+ * 		^Default: ""
+ * 
+ * @Note <noremacskich> The link needs http:// in order to function correctly
+ *
+ */
+function Button($text='Button', $link='#', $Icon=''){
+	// Now spit it out to the website
+	echo '<a href="' . $link . '" data-role="button" '. $Icon . '>' . $text . '</a>';
+}
+
+
+
+
+
+
+------------------------
+------------------------
+End Official Function Comments
+
+
+
+
+
+	/*
+	 * Button
+	 * @param $txt | String
+	 * 		^Description This is what the button will say
+	 * 		^Default "Button"
+	 * 
+	 * @param $link | HyperLink
+	 * 		^Description This is where the button will send you
+	 * 		^Default "#"
+	 * 
+	 * @param $Icon | File
+	 * 		^Description If you want an Icon, you put it here
+	 * 		^Default ""
+	 */
+    function Button($text='Button', $link='#', $Icon=''){
+		// The link needs http:// in order to function correctly
+		
+		// Now spit it out to the website
+	    echo '<a href="' . $link . '" data-role="button" '. $Icon . '>' . $text . '</a>';
+	}
+
+
+Added Description Block to 'functions/GoogleMap/googlemaps.php | googlemapheader function'
+
+------------------------
+
+
+Created Git Folder to hold two files, the 'CommentsForGit.txt' and 'History.txt'
+'CommentsForGit.txt' will hold the current comments before commit
+'history.txt' will hold all the comments 
+
+------------------------
+
+renamed 'functions.php' to 'htmlchunks.php'
+htmlchunks.php will be used to stor large chunks of html code
+
+------------------------
+
+created pageHead function which will store all the elements in the header of the html page.
+Variable controls the title of the page
+Added Description block to:
+	pageTop()
+	pageHead()
+
+------------------------
+
+Created:
+	pagesnippets | Folder
+	'LazerTag.php'
+	LazerTagParty | Function
+
+------------------------
+
+LazerTagPage - used to show the LazerTag portion of the site.
+
+------------------------
+
+Messed up code somehow, trying to get google maps to work
+GRRRR!!!!
+
+------------------------
+
+
+Removed googlemap.js, won't work without being embeded in html page as far as I can tell, 
+so moved content into php function that will spit out the code on the webpage with key and
+XMLPath variables.
+
+------------------------
+
+1/17/2013 9:17am
+
+Added "pagesnippets/TrojanCards.php"
+Changed a few more deals for trojan card
+
+------------------------
+
+Added newDeal function to 'pagesnippets/TrojanCards.php'
+
+------------------------
+
+
+
+
+
+1/26/2013
+------------------------
+
+Created GitStuff folder
+        BeforePush.log
+        History.log
+        HTMLDebug folder
+        
+GitStuff folder  - Hold BeforePush.log and History.log.
+BeforePush.log   - temporary area to store comments about changes to code.
+History.log      - BeforePush.log contents will be appended to this file once a push is complete.
+HTMLDebug folder - Holds the static html that gives the basic appearence of the page.
+
+------------------------
+
+
+Created:
+1	HTMLDebut/UserEndInterface/
+2	HTMLDebut/UserEndInterface/inputgui.html
+
+Reasons:
+1	Created folder to seperate out the various web interfaces.  Each folder will have the static HTML needed
+	to create a page.  Then it will have a php version of that html file that will be called to dynamically
+	output the HTML.
+2	This will be used for the clients to sign up on.
+
+------------------------
+
+Gotten inputgui.html mostly complete, need to do:
+	make it look more attractive
+	incorperate canvas for signatures.
+
+
+------------------------
+
+Created:
+1	DisectingThis folder
+
+Reasons:
+1	to disect how the canvas works, just need to remove unneeded bits of code.
+
+------------------------
+
+Deleted
+1	DisectingThis folder
+2		Canvas Paint - Example 5_files folder
+3			example5.js
+4		CanvasPaint - Example 5.htm
+
+Reasons:
+1-4	Found a better example
+
+------------------------
+
+Created
+1	HTMLDebug/SignatureTesting Folder
+
+Downloaded:
+2	Signature-pad-master.zip
+
+Unzipped:
+3	signature-pad-master.zip
+
+Reasons:
+1	To try this code that was created for the express purpose of 
+	creating signatures on a canvas.
+	From demo, it handles the leaving and entering of the canvas
+	quite well, without any other bugs that I have noticed from
+	other examples.
+	
+2	The Zip File comes from here:
+	https://github.com/thomasjbradley/signature-pad/
+	
+	And Documentation for use is here:
+	http://thomasjbradley.ca/lab/signature-pad/
+		
+3	Well, I need to test it somehow :P
+
+------------------------
+
+Created:
+1	HTMLDebug/SignaturePad/MyTry/ Folder
+2	HTMLDebug/SignaturePad/MyTry/SignatureTry.html
+3	HTMLDebug/SignaturePad/MyTry/Java/ Folder
+
+
+Reasons:
+1	Collect everything needed to make this work in one spot
+2	We need a page to try this on!!
+3	This is where we store all the external java files to make this work
+
+------------------------
+
+
+Now for the fun part, get it working!
+
+------------------------
+
+Created:
+1	GitStuff/code chunks.txt
+
+Reasons:
+1	This is a place where I can store chunks of code that might be useful in future
+
+------------------------
+
+Moved/Copied:
+1	jquery.signaturepad.css
+2	jquery.signaturepad.min.js
+3	json2.min.js
+4	jquery.min.js
+5	NEW-BSD-LICENSE.txt
+
+Reasons:
+1-4	These are files needed for signature to work.
+5	Need it there for legal reasons
+
+Other:
+	SignatureTry.html works now, but next I need to figure
+	out how to get the information and replicate the signature
+	
+------------------------
+Created/Copied:
+1	MyTryExperimental
+
+Renamed:
+2	MyTryExperimental/SignatureTry.html
+
+Reasons:
+1	This way I will always have a working version.
+2	To SignatureTryExp.html - this way I can visually check
+	to make sure that I am not modifying the working file
+	
+------------------------
+
+
+
+
+
+
+
+1/24/2013
+------------------------
+
+Created GitStuff folder
+        BeforePush.log
+        History.log
+
+GitStuff folder - Hold BeforePush.log and History.log.
+BeforePush.log - temporary area to store comments about changes to code.
+History.log - BeforePush.log contents will be appended to this file once a push is complete.
+
+------------------------
+
+Created HTMLDebug folder
+        Membership.html
+        
+HTMLDebug folder - Holds the static html that gives the basic appearence of the page.
+Membership.html - Show all the members of a club and user interface to change the details.
+
+------------------------
+
+Initial thought process for Page
+Better to have everything related to one person in a single group, or seperate out
+the stuff that will stay on the screen from the scrollable stuff...
+
+------------------------
+
+Got the basic webpage setup with people on it.
+Adding Styles Next
+
+------------------------
+
+
+Created HTMLDebug/Stylesheets folder
+        People.css
+        
+StyleSheets folder - Holds the style sheets for all the html pages in HTMLDebug
+People.css - Controls how the rows for each person appears in Membership.html
+
+------------------------
+
+Styling mostly complete, looks like a table with the styling.
+
+column# classes will have to be generated each time to accomadate varying widths of text
+
+do something like below to make table look uniform
+
+        462
+ 1 2 3 4 | 6 7 8 9 0
+ x x x x x x x x x x x x x x 
+ x x x x x x x x x x x x x x 
+ x x x x x x x x x x x x x x 
+ 
+
+------------------------
+
+Trying to get the checkboxes to center, but it isn't working :(
+
+------------------------
+
+
+
+
+4/11/2013
+------------------------
+
+Created
+1	gitStuff/
+2	gitStuff/BeforePush.log
+3	gitStuff/History.log
+4	htmlDebug
+
+Reasons:
+1	Hold BeforePush.log and History.log.
+2	temporary area to store comments about changes to code.
+3	BeforePush.log contents will be appended to this file once a push is complete.
+4	Holds the static html that gives the basic appearence of the page.
+
+1:46pm ------------------------
+
+Created:
+1	htmlDebug/weekLayout.html
+
+Reasons:
+1	This is the testing page that will assist me in creating a week layout that
+	can display the class schedule
+
+4/14/2013 2:13pm------------------------
+Created:
+1	calendar.svg
+
+Reasons:
+1	This will be used to display the calendar, it is much easier to position
+	events on an svg than a html document.  Also styling should be easier, and
+	creating the svg file on the fly should not be that difficult.
+	
+2:21pm------------------------
+
+Created:
+1	PHPfunctions
+2		calendersvg.php
+
+Reasons:
+1	This will hold all of our php functions.
+2	This will hold all the functions required to create the svg calendar.
+
+6:32pm------------------------
+
+Created:
+1	calendarSVG.php : Headings
+
+Reasons:
+1	This will print out the svg needed to create the headings in the svg 
+	calendar
+	
+4/16/2013 8:40AM---------------------------
+
+Other:
+1	Found php function tester online
+
+Info:
+1	http://writecodeonline.com/php/
+
+9:10AM------------------------
+Created:
+1	PHPfunctions\calenderSVG.php : headings()
+2	PHPfuncitons\calendarSVG.php : times()
+3	PHPfunctions\calendarSVG.php : completeSVG()
+
+Reasons:
+1	This function will spit out the svg needed to create the top row indicating
+	the day of the week.
+2	This function will spit out the svg needed to create the time markers that
+	goes along the side of the calendar
+3	This function will spit out the rest of the svg needed to create an svg
+
+9:27AM------------------------
+
+Created:
+1	Regex : (\d?\d):(\d\d)([A|P])M
+
+Reasons:
+1	To get the number of minutes from class.
+
+Other:
+	Regex:
+		(\d?\d):(\d\d)([A|P])M
+	String:
+		19:00PM
+	Captured groups:
+		0: "19:00PM"
+		1: "19"
+		2: "00"
+		3: "P"
+		
+10:40AM------------------------
+Created:
+1	Regex
+
+Reasons:
+1	This regex will help reduce the size of the Weekdays column, by turning it
+	into seven bits.
+	
+	
+Other:
+	Regex:
+		(Monday)?,? ?(Tuesday)?,? ?(Wednesday)?,? ?(Thursday)?,? ?(Friday)?,? ?(Saturday)?,? ?(Sunday)?,? ?
+	String:
+		Monday, Wednesday 
+	Captured groups:
+		0: "Monday, Wednesday "
+		1: "Monday"
+		2: ""
+		3: "Wednesday"
+		4: ""
+		5: ""
+		6: ""
+		7: ""
+		
+11:33AM------------------------
+Created:
+1	PHPfuncitons\calendarSVG.php : TimeConvert()
+
+Reasons:
+1	This will convert the inputed time, into the number of minutes since the 
+	start of the day.
+	
+
+4/18/2013-----------------------------
+
+Trying to figure out best way to display calendar in general:
+	1	Have everything in 1 svg
+	2	Have header floating in seperate div, and have the times in div below
+		the header
+		
+Created:
+1	layouts/
+2	layouts/single.svg
+3	layouts/
+
+Reasons:
+1	This will hold the second option for trying the layout of the calendar
+
+12:53PM------------------------
+
+Got the week layout working.
+
+4/27/2013 3:09 PM------------------------
+
+Added:
+1	jQuery reference
+
+Reasons:
+1	To manipulate the calendar a lot easier
+
+3:45 PM------------------------
+
+Tip:
+1	When you want to overlap two elements, you need to have the parent element
+	be relatively positioned.  Then you need to absolutely position the two 
+	elements that you want to overlap.
+	
+4:17 pm------------------------
+Progress:
+1	Changed the placement of text in hours, still needs adjustment
+2	Moved the hours lines up to 0, instead of 6.5, easier for direct time
+	conversion between hours and events
+3	Figured out how to place events over the hours grid
+4	Got a couple of events on calendar
+5	Have Scrollbar automatically scrolling to 8:00 AM
+
+Thoughts:
+1	Should be able to easily change the pixel / time ratio, therefore rendering 
+	the times should match up.
+2	Dynamic changes come later, when I have everything laid out the way I want 
+	it
+3	Need to come up with design goals, and success criteria
+
+Deleted:
+1	PHPfunctions/ohter
+2	PHPfunctions/other.js
+
+Reasons:
+1	The file wasn't related to this project
+2	The file wasn't related to this project
+
+5:14 pm------------------------
+
+Progress:
+1	Tweaked a few more things
+2	Commented the lines in the event, explaining how to get the attributes
+
+5:59 PM -------------------------
+
+Progress:
+1	Found way to control font size
+2	Each event will now have 2 lines, 1 for the title of the event, and another 
+	for the location of the event.
+
+Copied
+1	layouts/2svgdiv.html to layouts/2svgdiv.php
+
+Reasons:
+1	This will be modified to create php functions that will output the display.
+
+
+
+
+2/26/2013
+------------------------
+
+Created GitStuff folder
+        BeforePush.log
+        History.log
+        HTMLDebug folder
+        
+GitStuff folder  - Hold BeforePush.log and History.log.
+BeforePush.log   - temporary area to store comments about changes to code.
+History.log      - BeforePush.log contents will be appended to this file once a push is complete.
+HTMLDebug folder - Holds the static html that gives the basic appearence of the page.
+
+------------------------
+
+
