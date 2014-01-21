@@ -1,0 +1,61 @@
+Official Function Comments
+------------------------
+------------------------
+
+/* @function copy the function call and paste here
+ * 	^What will this function do?
+ *
+ * @requires Does this function rely on any libraries or packages?
+ *
+ * @usedFunctions list out all the functions that are used. This is optional
+ *
+ * @param Param Name | Variable Type | Optional
+ * 		^	Describe what the parameter is for.  If optional isn't stated, then it is assumed that the
+ * 			parameter is required.  If it is stated, you must list what the default value or 
+ * 			behaviour is below.
+ * 		^	This is where you state the default value or behaviour if the optional tag is stated.  If
+ *			it is not stated, then you omit this tag.
+ *
+ * @Return State what is returned, or what is done (eg echo'd something to the client etc.) 
+ *			This is optional. If it returns a variable, then use the same format as the parameters.
+ *			
+ * @Todo <Github Name> What still needs to be done with this function. This is optional.
+ * 
+ * @Note <Github Name> Any else that should be stated?
+ */
+
+
+/*
+ * @function Button($text='Button', $link='#', $Icon='')
+ * 	^This will spit out the html for a new button for jqueryUI.
+ *
+ * @requires JqueryUI
+ *
+ * @param $txt | String
+ * 		^This is what the button will say
+ * 		^Default: "Button"
+ * 
+ * @param $link | HyperLink
+ * 		^This is where the button will send you
+ * 		^Default: "#"
+ * 
+ * @param $Icon | File
+ * 		^If you want an Icon, you put it here
+ * 		^Default: ""
+ * 
+ * @Note <noremacskich> The link needs http:// in order to function correctly
+ *
+ */
+function Button($text='Button', $link='#', $Icon=''){
+	// Now spit it out to the website
+	echo '<a href="' . $link . '" data-role="button" '. $Icon . '>' . $text . '</a>';
+}
+
+
+
+
+
+
+------------------------
+------------------------
+End Official Function Comments

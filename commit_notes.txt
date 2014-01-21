@@ -1,0 +1,77 @@
+Official commit style
+------------------------
+------------------------
+
+##/##/####
+##:## ?m ------------------------
+
+Created:
+1	path/to/file.ext
+2	folder
+3	path/to/file.ext : function name
+4	path/to/file.ext : regex
+
+Reasons:
+1	Description of what the file is supposed to have
+2	what should go into the the folder?
+3	Description of what the function does
+4	Explain what the regex primarily does.  Show what it does 
+	in the info section
+
+--------------
+
+Deleted:
+1	path/to/file.ext
+2	folder
+3	path/to/file.ext : function name
+4	path/to/file.ext : regex
+
+Reasons:
+5-8	Why did you delete this?  Was it depreciated? If so, why?
+	did you come up with a better way of doing it? Explain.
+
+--------------
+
+Moved:
+1	path/to/file.ext -> path2/to/file.ext
+2	folder -> folder2
+3	path/to/file.ext : function name -> path/file.ext
+4	from/this/path -> to/this/path
+5	^	file1.ext
+6	^	file2.ext
+7	^	file3.ext
+
+
+Reasons:
+1	
+2	
+3	Did moving the function to the file make more sense?  Why?
+4-7	Do these files need to stay together?  Do they need . . .	
+
+--------------
+Renamed:
+1	file.ext -> file2.ext
+2	file.ext : function -> function2
+
+Reasons:
+1	Does the new name make more sense?  New name fit the naming scheme better?
+
+--------------
+
+Other:
+	Regex:
+		(\d?\d):(\d\d)([A|P])M
+	String:
+		19:00PM
+	Captured groups:
+		0: "19:00PM"
+		1: "19"
+		2: "00"
+		3: "P"
+		
+
+##:## ?m ------------------------
+
+------------------------
+------------------------
+End Official Commit Style

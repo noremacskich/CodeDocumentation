@@ -1,4 +1,27 @@
 
+	/*
+	 * Button
+	 * @param $txt | String
+	 * 		^Description This is what the button will say
+	 * 		^Default "Button"
+	 * 
+	 * @param $link | HyperLink
+	 * 		^Description This is where the button will send you
+	 * 		^Default "#"
+	 * 
+	 * @param $Icon | File
+	 * 		^Description If you want an Icon, you put it here
+	 * 		^Default ""
+	 */
+    function Button($text='Button', $link='#', $Icon=''){
+		// The link needs http:// in order to function correctly
+		
+		// Now spit it out to the website
+	    echo '<a href="' . $link . '" data-role="button" '. $Icon . '>' . $text . '</a>';
+	}
+
+
+
 	
 	/* eventLength()
 	 * 
