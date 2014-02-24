@@ -12,9 +12,9 @@ Created:
 4	path/to/file.ext : regex
 
 Reasons:
-1	Description of what the file is supposed to have
+1	Description of what the file is supposed to have.
 2	what should go into the the folder?
-3	Description of what the function does
+3	Description of what the function does.
 4	Explain what the regex primarily does.  Show what it does 
 	in the info section
 
@@ -43,8 +43,8 @@ Moved:
 
 
 Reasons:
-1	
-2	
+1	Why did you move the file?  Does it need to be here instead?
+2	Why did you move the folder?  Does this spot make more sense?
 3	Did moving the function to the file make more sense?  Why?
 4-7	Do these files need to stay together?  Do they need . . .	
 
@@ -68,7 +68,9 @@ Other:
 		1: "19"
 		2: "00"
 		3: "P"
-		
+
+Notes:
+	State anything else here.		
 
 ##:## ?m ------------------------
 

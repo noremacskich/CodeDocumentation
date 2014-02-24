@@ -2,26 +2,41 @@ Official Function Comments
 ------------------------
 ------------------------
 
-/* @function copy the function call and paste here
- * 	^What will this function do?
+/**@function name($var, $var1='default')
+ * 	^	Short description of what the function does
  *
- * @requires Does this function rely on any libraries or packages?
+ * @requires (Jquery, JqueryUI, NodeJS, etc.)
  *
- * @usedFunctions list out all the functions that are used. This is optional
- *
- * @param Param Name | Variable Type | Optional
- * 		^	Describe what the parameter is for.  If optional isn't stated, then it is assumed that the
- * 			parameter is required.  If it is stated, you must list what the default value or 
- * 			behaviour is below.
- * 		^	This is where you state the default value or behaviour if the optional tag is stated.  If
- *			it is not stated, then you omit this tag.
- *
- * @Return State what is returned, or what is done (eg echo'd something to the client etc.) 
- *			This is optional. If it returns a variable, then use the same format as the parameters.
- *			
- * @Todo <Github Name> What still needs to be done with this function. This is optional.
+ * @param $var | Type (| Optional)
+ * 	^	What does this variable represent?
+ *	^	If multiple lines, use same indicator
+ *	F	This is the format of the string you expect for the function.
+ *	E	This will be an example of that format
+ * 	(D	"This is the default value, if it's a string, use double quotes.")
  * 
- * @Note <Github Name> Any else that should be stated?
+ * @param $arrayname | Array | [$array, $elements]
+ * 	^	Description of the array
+ *
+ * 	@element $array | Var Type (|optional)
+ *		^	Description of what this element of the array represents, or will
+ *		^	do in terms of this function.
+ *		(D	This is the default value for this position in the array, if it
+ *			isn't defined)
+ *
+ * 	@element $elements | Var Type (|optional)
+ *		^	Description of what this element of the array represents, or will
+ *		^	do in terms of this function.
+ *		(D	This is the default value for this position in the array, if it
+ *			isn't defined)
+ *
+ * @note github username
+ * 	^	What did you want to note about this file? Seperate ideas should be in
+  * 	^	seperate notes.
+ *
+ * @todo github username
+ *	^	What still needs to be done?  Each @todo should deal with a specific
+ *	^	problem.
+ * 
  */
 
 
