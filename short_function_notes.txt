@@ -29,6 +29,9 @@ Official Function Comments
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
  *
+ * @return
+ *	^	This is optional. If it returns a variable, then use the same format as the parameters.
+ *
  * @note github username
  *	^	What did you want to note about this file? Seperate ideas should be in
  *	^	seperate notes.
