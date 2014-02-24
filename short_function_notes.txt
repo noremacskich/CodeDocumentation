@@ -2,10 +2,10 @@ Official Function Comments
 ------------------------
 ------------------------
 
-/**@function name($var, $var1='default')
+/**@fun name($var, $var1='default')
  * 	^	Short description of what the function does
  *
- * @requires (Jquery, JqueryUI, NodeJS, etc.)
+ * @reqs (Jquery, JqueryUI, NodeJS, etc.)
  *
  * @param $var | Type (| Optional)
  * 	^	What does this variable represent?
@@ -17,21 +17,21 @@ Official Function Comments
  * @param $arrayname | Array | [$array, $elements]
  * 	^	Description of the array
  *
- * 	@element $array | Var Type (|optional)
+ *	@element $array | Var Type (|optional)
  *		^	Description of what this element of the array represents, or will
  *		^	do in terms of this function.
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
  *
- * 	@element $elements | Var Type (|optional)
+ *	@element $elements | Var Type (|optional)
  *		^	Description of what this element of the array represents, or will
  *		^	do in terms of this function.
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
  *
  * @note github username
- * 	^	What did you want to note about this file? Seperate ideas should be in
-  * 	^	seperate notes.
+ *	^	What did you want to note about this file? Seperate ideas should be in
+ *	^	seperate notes.
  *
  * @todo github username
  *	^	What still needs to be done?  Each @todo should deal with a specific
@@ -41,35 +41,31 @@ Official Function Comments
 
 
 /*
- * @function Button($text='Button', $link='#', $Icon='')
- * 	^This will spit out the html for a new button for jqueryUI.
+ * @fun Button($text='Button', $link='#', $Icon='')
+ *	^	This will spit out the html for a new button for jqueryUI.
  *
- * @requires JqueryUI
+ * @reqs JqueryUI
  *
  * @param $txt | String
- * 		^This is what the button will say
- * 		^Default: "Button"
+ *	^	This is what the button will say
+ *	^	D	"Button"
  * 
  * @param $link | HyperLink
  * 		^This is where the button will send you
  * 		^Default: "#"
  * 
  * @param $Icon | File
- * 		^If you want an Icon, you put it here
- * 		^Default: ""
+ *	^	If you want an Icon, you put it here
+ *	^D	""
  * 
- * @Note <noremacskich> The link needs http:// in order to function correctly
+ * @Note <noremacskich> 
+ *	^	The link needs http:// in order to function correctly
  *
  */
 function Button($text='Button', $link='#', $Icon=''){
 	// Now spit it out to the website
 	echo '<a href="' . $link . '" data-role="button" '. $Icon . '>' . $text . '</a>';
 }
-
-
-
-
-
 
 ------------------------
 ------------------------

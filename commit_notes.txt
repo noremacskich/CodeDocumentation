@@ -2,9 +2,6 @@ Official commit style
 ------------------------
 ------------------------
 
-##/##/####
-##:## ?m ------------------------
-
 Created:
 1	path/to/file.ext
 2	folder
@@ -46,9 +43,23 @@ Reasons:
 1	Why did you move the file?  Does it need to be here instead?
 2	Why did you move the folder?  Does this spot make more sense?
 3	Did moving the function to the file make more sense?  Why?
-4-7	Do these files need to stay together?  Do they need . . .	
+4-7	Do these files need to stay together?  Do they need . . .
 
 --------------
+
+Modified:
+1	file.ext
+2	file.ext : function(params)
+3	file.ext : function(param1, param2, param3) -> function(param1)
+
+Reasons:
+1	Why did you modify the file? This is a "catch all" statement, use this only if you can't use
+	anything else.
+2	Why did you modify the way the function works?
+3	Why did you add / remove the attributes?
+
+--------------
+
 Renamed:
 1	file.ext -> file2.ext
 2	file.ext : function -> function2
@@ -58,21 +69,27 @@ Reasons:
 
 --------------
 
-Other:
-	Regex:
-		(\d?\d):(\d\d)([A|P])M
-	String:
-		19:00PM
-	Captured groups:
-		0: "19:00PM"
-		1: "19"
-		2: "00"
-		3: "P"
+Regex's:
+1	(\d?\d):(\d\d)([A|P])M
+
+Reason:
+1	This will separate out the hours, minutes and am/pm
+
+Strings:
+1	19:00PM
+
+Capture Groups:
+1	0: "19:00PM"
+	1: "19"
+	2: "00"
+	3: "P"
+
+--------------
 
 Notes:
-	State anything else here.		
+1	State anything else here.
+2	or thoughts
 
-##:## ?m ------------------------
 
 ------------------------
 ------------------------
