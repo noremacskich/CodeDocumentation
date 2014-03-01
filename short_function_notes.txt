@@ -3,42 +3,64 @@ Official Function Comments
 ------------------------
 
 /**@fun name($var, $var1='default')
- * 	^	Short description of what the function does
+ * 	^	Short description of what the function does.  
+ *	^	@fun is short for @function
  *
  * @reqs (Jquery, JqueryUI, NodeJS, etc.)
- *
+ *	^	Short description of why this is needed.
+ *	^	@reqs is short for @requirements
+ * 
  * @param $var | Type (| Optional)
  * 	^	What does this variable represent?
- *	^	If multiple lines, use same indicator
+ *		If multiple lines, omit the ^ symbol.
  *	F	This is the format of the string you expect for the function.
  *	E	This will be an example of that format
  * 	(D	"This is the default value, if it's a string, use double quotes.")
- * 
+ *	(N	This is a special note about this parameter.)
+ *
  * @param $arrayname | Array | [$array, $elements]
  * 	^	Description of the array
+ *	(N	This is where you put an note that effects the array in its entirety. 
+ *		If the note is more related to a specific element in the array, then
+ *		put it with that element.)
  *
  *	@element $array | Var Type (|optional)
  *		^	Description of what this element of the array represents, or will
- *		^	do in terms of this function.
+ *			do in terms of this function.
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
+ *		(N	This is a special note about this element in the array.)
  *
  *	@element $elements | Var Type (|optional)
  *		^	Description of what this element of the array represents, or will
- *		^	do in terms of this function.
+ *			do in terms of this function.
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
+ *		(N	This is a special note about this element in the array.)
  *
- * @return
- *	^	This is optional. If it returns a variable, then use the same format as the parameters.
+ * @return (Type)
+ *	^	This is optional.
+ *	F	This is the format of the output string you expect for the function.
+ *	E	This will be an example of the return format.
+ * 	(D	"This is the default return value, if it's a string, use double 
+ *		quotes.")
+ *	(N	This is a special note about the return type.)
+ * 
+ * @note <github username> Date
+ *	^	What did you want to note about this file? 
+ *	^	Seperate ideas should be in seperate notes. 
+ *	^	The brackets around the github name should not be included, it's just 
+ *		there to indicate that it is just one word.
+ *	^	Date should be formatted as YYY-MM-DD, as stated in RFC 3339 section
+ *		5.6 full-date definition
  *
- * @note github username
- *	^	What did you want to note about this file? Seperate ideas should be in
- *	^	seperate notes.
- *
- * @todo github username
- *	^	What still needs to be done?  Each @todo should deal with a specific
- *	^	problem.
+ * @todo <github username> Date
+ *	^	What still needs to be done?  
+ *	^	Each @todo should deal with a specific problem.
+ *	^	The brackets around the github name should not be included, it's just
+ *		there to indicate that it is just one word.
+ *	^	Date should be formatted as YYYY-MM-DD, as stated in RFC 3339 section
+ *		5.6 full-date definination.
  * 
  */
 
@@ -51,17 +73,17 @@ Official Function Comments
  *
  * @param $txt | String
  *	^	This is what the button will say
- *	^	D	"Button"
+ *	D	"Button"
  * 
  * @param $link | HyperLink
- * 		^This is where the button will send you
- * 		^Default: "#"
+ * 	^	This is where the button will send you
+ * 	D	"#"
  * 
  * @param $Icon | File
  *	^	If you want an Icon, you put it here
- *	^D	""
+ *	D	""
  * 
- * @Note <noremacskich> 
+ * @note noremacskich 2014-03-01
  *	^	The link needs http:// in order to function correctly
  *
  */

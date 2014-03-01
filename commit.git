@@ -1,0 +1,30 @@
+More detailed descriptions.
+
+Modified:
+1	short_function_notes.txt : @return
+2	short_function_notes.txt : @note
+3	short_function_notes.txt : @todo
+4	short_function_notes.txt : @param
+5	short_function_notes.txt : @element
+6	short_function_notes.txt : @fun
+7	short_function_notes.txt : @reqs
+8	short_function_notes.txt
+
+Reasons:
+1	Added the return type, and attributes from a param property.
+2-3	Added a date parameter based on RFC 3339, put brackets around the github 
+	username, for clarity 
+4-5	Added note sections.
+6-7	Added what they stand stand for.
+8	Updated the example.
+
+--------------
+
+Renamed:
+1	commit.log -> commit.git
+
+Reasons:
+1	This way git will include this when finding differences.  Just to remind,
+	commit.git should be used to track reasons for changing things.  It should
+	be identical to the commit message.
+
