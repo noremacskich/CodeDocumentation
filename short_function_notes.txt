@@ -10,45 +10,45 @@ Official Function Comments
  *	^	Short description of why this is needed.
  *	^	@reqs is short for @requirements
  * 
- * @param $var | Type (| Optional)
+ * @param $var | Var Type (| Optional)
  * 	^	What does this variable represent?
  *		If multiple lines, omit the ^ symbol.
- *	F	This is the format of the string you expect for the function.
- *	E	This will be an example of that format
+ *	(F	This is the format of the string you expect for the function.)
+ *	(E	This will be an example of that format)
  * 	(D	"This is the default value, if it's a string, use double quotes.")
  *	(N	This is a special note about this parameter.)
- *
- * @param $arrayname | Array | [$array, $elements]
+ *	
+ * @param $arrayname | Array | [$array, $elements] (| Optional)
  * 	^	Description of the array
- *	(N	This is where you put an note that effects the array in its entirety. 
+ *	(N	This is where you put a note that effects the array in its entirety. 
  *		If the note is more related to a specific element in the array, then
  *		put it with that element.)
  *
- *	@element $array | Var Type (|optional)
+ *	@element $array | Var Type (| Optional)
  *		^	Description of what this element of the array represents, or will
  *			do in terms of this function.
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
  *		(N	This is a special note about this element in the array.)
  *
- *	@element $elements | Var Type (|optional)
+ *	@element $elements | Var Type (| Optional)
  *		^	Description of what this element of the array represents, or will
  *			do in terms of this function.
  *		(D	This is the default value for this position in the array, if it
  *			isn't defined)
  *		(N	This is a special note about this element in the array.)
  *
- * @return (Type)
+ * @return (Var Type)
  *	^	This is optional.
- *	F	This is the format of the output string you expect for the function.
- *	E	This will be an example of the return format.
+ *	(F	This is the format of the output string you expect for the function.)
+ *	(E	This will be an example of the return format.)
  * 	(D	"This is the default return value, if it's a string, use double 
  *		quotes.")
  *	(N	This is a special note about the return type.)
  * 
  * @note <github username> Date
  *	^	What did you want to note about this file? 
- *	^	Seperate ideas should be in seperate notes. 
+ *	^	separate ideas should be in separate notes. 
  *	^	The brackets around the github name should not be included, it's just 
  *		there to indicate that it is just one word.
  *	^	Date should be formatted as YYY-MM-DD, as stated in RFC 3339 section
@@ -60,9 +60,11 @@ Official Function Comments
  *	^	The brackets around the github name should not be included, it's just
  *		there to indicate that it is just one word.
  *	^	Date should be formatted as YYYY-MM-DD, as stated in RFC 3339 section
- *		5.6 full-date definination.
+ *		5.6 full-date definition.
  * 
  */
+
+
 
 
 /*
