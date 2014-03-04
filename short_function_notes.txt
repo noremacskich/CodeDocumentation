@@ -18,6 +18,14 @@ Official Function Comments
  * 	(D	"This is the default value, if it's a string, use double quotes.")
  *	(N	This is a special note about this parameter.)
  *	
+ * @param $var | Bool (| Optional)
+ * 	^	What does this variable represent?
+ *		If multiple lines, omit the ^ symbol.
+ *	(T	This is what true means)
+ *	(F	This is what false means)
+ * 	(D	Put the D after the default return value (the F or T))
+ *	(N	This is a special note about this parameter.)
+ * 
  * @param $arrayname | Array | [$array, $elements] (| Optional)
  * 	^	Description of the array
  *	(N	This is where you put a note that effects the array in its entirety. 
@@ -63,6 +71,7 @@ Official Function Comments
  *		5.6 full-date definition.
  * 
  */
+
 
 
 

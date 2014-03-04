@@ -1,16 +1,13 @@
-Coloring Info and Tweaks
-
-Created:
-1	Coding Colors.doc
-
-Reasons:
-1	This shows the coloring standards for my documentation.
-
---------------
+More Tweaks
 
 Modified:
-1	short_function_notes.txt
+1	Coding Colors.doc
+2	short_function_notes.txt
 
 Reasons:
-1	Cleaned up a couple of spelling errors.  Also put parenthises around the 
-	format and example attributes of the param and return types.
+1	Changed the font type.  Also added a var type section, and a style guide
+	section.
+2	Added 2 new Attributes to a parameter, a T and F.  T standing for true,
+	the F standing for the false.  You specify what the true and false means
+	on the respective lines.  There is a trailing D that goes after either 
+	the T or F, to indicate which one is the default value.
