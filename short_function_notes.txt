@@ -21,8 +21,8 @@ Official Function Comments
  * @param $var | Bool (| Optional)
  * 	^	What does this variable represent?
  *		If multiple lines, omit the ^ symbol.
- *	(T	This is what true means)
- *	(F	This is what false means)
+ *	T	This is what true means
+ *	F	This is what false means
  * 	(D	Put the D after the default return value (the F or T))
  *	(N	This is a special note about this parameter.)
  * 
@@ -46,6 +46,12 @@ Official Function Comments
  *			isn't defined)
  *		(N	This is a special note about this element in the array.)
  *
+ * @error <Error Name> | Error Type
+ *	^	Description
+ *	C	What caused this error?
+ *	F	In this case, the F is short for fix, or what you can do to fix this 
+ *		error.
+ * 	
  * @return (Var Type)
  *	^	This is optional.
  *	(F	This is the format of the output string you expect for the function.)
@@ -53,6 +59,13 @@ Official Function Comments
  * 	(D	"This is the default return value, if it's a string, use double 
  *		quotes.")
  *	(N	This is a special note about the return type.)
+ * 
+ * 
+ * @return Bool
+ *	T	This is what true means
+ *	F	This is what false means
+ * 	(D	Put the D after the default return value (the F or T))
+ *	(N	This is a special note about this parameter.)
  * 
  * @note <github username> Date
  *	^	What did you want to note about this file? 
@@ -71,6 +84,7 @@ Official Function Comments
  *		5.6 full-date definition.
  * 
  */
+
 
 
 

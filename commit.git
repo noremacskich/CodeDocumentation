@@ -1,13 +1,8 @@
-More Tweaks
+@error and bool return type update.
 
 Modified:
 1	Coding Colors.doc
 2	short_function_notes.txt
 
 Reasons:
-1	Changed the font type.  Also added a var type section, and a style guide
-	section.
-2	Added 2 new Attributes to a parameter, a T and F.  T standing for true,
-	the F standing for the false.  You specify what the true and false means
-	on the respective lines.  There is a trailing D that goes after either 
-	the T or F, to indicate which one is the default value.
+1-2	Added a basic @error and also added what to do with a return type of bool.
