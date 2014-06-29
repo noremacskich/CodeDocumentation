@@ -1,8 +1,14 @@
-@error and bool return type update.
+Added HTML version of Color Coding
 
-Modified:
-1	Coding Colors.doc
-2	short_function_notes.txt
+Created:
+1	CodingColors.html
 
 Reasons:
-1-2	Added a basic @error and also added what to do with a return type of bool.
+1	Using html will allow me to format and color the comments on the fly
+	and it is not reliant on an office suite.
+
+Deleted:
+1	CodingColors.doc
+
+Reasons:
+1	I will no longer be using this, will be using the html version instead.

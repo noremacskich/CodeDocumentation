@@ -1,0 +1,187 @@
+<html>
+<head>
+	<title>Noremac's Code Documentation Style</title>
+	<style>
+		* {
+			font-size:13px;
+		}
+		body {
+			background: black;
+			color: grey;
+		}
+		.attr {
+			color:#00b050;
+		}
+		.description {
+			color: #a6a6a6;
+			font-style: italic;
+		}
+		.varName {
+			color:#dd99dd;	
+		}
+		.varType {
+			color:#ffc000;
+		}
+		.optional {
+			color: #f7caac;
+			font-style: italic;
+		}
+		.strFormat {
+
+		}
+		.strExample {
+			color:#7f7f00;
+		}
+		.defaultVal {
+			color:#5b9bd5;
+		}
+		.attrNote {
+			color:#806000;
+		}
+		.date {
+			font-style: italic;
+		}
+		.gitName {
+			font-style: bold;
+		}
+		.true {
+			color: #00ff00;
+		}
+		.false{
+			color: #ff0000;
+		}
+		.errorCause {
+			color:#aaaa00;
+		}
+
+		.errorFix {
+			color:#00ffff;
+		}
+	</style>
+</head>
+<body>
+
+Var Types:
+<ol>
+	<li>int (integer)</li>
+	<li>float</li>
+	<li>char (character)</li>
+	<li>folder (Path)</li>
+	<li>str (string)</li>
+	<li>file</li>
+	<li>bool (boolean)</li>
+	<li>Array</li>
+	<li>object</li>
+</ol>
+
+<ol>
+	<li class="attr     "  >@Attribute</li>
+	<li class="description">Description</li>
+	<li class="varName"    >Variable Name</li>
+	<li class="varType"    >Variable Type</li>
+	<li class="optional"   >Optional</li>
+	<li class="strFormat"  >String Format (F)</li>
+	<li class="strExample" >String Example (E)</li>
+	<li class="defaultVal" >Default Value (D)</li>
+	<li class="attrNote"   >Attribute Note (N)</li>
+	<li class="date"       >Date</li>
+	<li class="gitName"    >&lt;Git Username&gt;</li>
+	<li class="errorCause" >Cause of Error (C)</li>
+	<li class="errorFix"   >How to fix the Error (F)</li>
+</ol>
+
+Default Color Scheme
+<ol>
+	<li>0, 176, 80</li>
+	<li>166, 166, 166 - Italic</li>
+	<li>255, 192, 0</li>
+	<li>244, 176, 131 - Italic </li>
+</ol>
+</p>
+<pre>
+/**<a class="attr">@fun </a>name(<a class="varName">$var, $var1</a>='default')</a>
+ * 	^	<a class="description">Short description of what the function does.</a>
+ *	^	<a class="description">@fun is short for @function</a>
+ *
+ * <a class="attr">@reqs </a>(Jquery, JqueryUI, NodeJS, etc.)</a>
+ *	^	<a class="description">Short description of why this is needed.</a>
+ *	^	<a class="description">@reqs is short for @requirements</a>
+ * 
+ * <a class="attr">@param </a><a class="varName">$var </a> <a class="varType">| Var Type</a> <a class="optional">(| Optional)</a>
+ * 	^	<a class="description">What does this variable represent?</a>
+ *		<a class="description">If multiple lines, omit the ^ symbol.</a>
+ *	<a class="strFormat">(F	This is the format of the string you expect for the function.)</a>
+ *	<a class="strExample">(E	This will be an example of that format)</a>
+ * 	<a class="defaultVal">(D	"This is the default value, if it's a string, use double quotes.")</a>
+ *	<a class="attrNote">(N	This is a special note about this parameter.)</a>
+ *	
+ * <a class="attr">@param </a><a class="varName">$var</a> <a class="varType">| Bool</a> <a class="optional">(| Optional)</a>
+ * 	^	<a class="description">What does this variable represent?</a>
+ *		<a class="description">If multiple lines, omit the ^ symbol.</a>
+ *	<a class="true">T	This is what true means</a>
+ *	<a class="false">F	This is what false means</a>
+ * 	<a class="defaultVal">(D	Put the D after the default return value (the F or T))</a>
+ *	<a class="attrNote">(N	This is a special note about this parameter.)</a>
+ * 
+ * <a class="attr">@param </a><a class="varName">$arrayname</a> <a class="varType">| Array</a> | <a class="varName">[$array, $elements]</a> <a class="optional">(| Optional)</a></a>
+ * 	^	<a class="description">Description of the array</a>
+ *	<a class="attrNote">(N	This is where you put a note that effects the array in its entirety. </a>
+ *		<a class="attrNote">If the note is more related to a specific element in the array, then</a>
+ *		<a class="attrNote">put it with that element.)</a>
+ *
+ *	<a class="attr">@element </a><a class="varName">$array</a> <a class="varType">| Var Type </a><a class="optional">(| Optional)<a/>
+ *		^	<a class="description">Description of what this element of the array represents, or will</a>
+ *			<a class="description">do in terms of this function.</a>
+ *		<a class="defaultVal">(D	This is the default value for this position in the array, if it</a>
+ *			<a class="defaultVal">isn't defined)</a>
+ *		<a class="attrNote">(N	This is a special note about this element in the array.)</a>
+ *
+ *	<a class="attr">@element </a><a class="varName">$elements</a> <a class="varType">| Var Type </a><a class="optional">(| Optional)</a>
+ *		^	<a class="description">Description of what this element of the array represents, or will</a>
+ *			<a class="description">do in terms of this function.</a>
+ *		<a class="defaultVal">(D	This is the default value for this position in the array, if it</a>
+ *			<a class="defaultVal">isn't defined)</a>
+ *		<a class="attrNote">(N	This is a special note about this element in the array.)</a>
+ *
+ * <a class="attr">@error </a>&lt;Error Name&gt; <a class="varType">| Error Type</a>
+ *	^	<a class="description">Description</a>
+ *	<a class="errorCause">C	What caused this error?</a>
+ *	<a class="errorFix">F	In this case, the F is short for fix, or what you can do to fix this </a>
+ *		<a class="errorFix">error.</a>
+ * 	
+ * <a class="attr">@return </a><a class="varType">(Var Type)</a>
+ *	^	<a class="description">This is optional.</a>
+ *	<a class="strFormat">(F	This is the format of the output string you expect for the function.)</a>
+ *	<a class="strExample">(E	This will be an example of the return format.)</a>
+ * 	<a class="defaultVal">(D	"This is the default return value, if it's a string, use double </a>
+ *		<a class="defaultVal">quotes.")</a>
+ *	<a class="attrNote">(N	This is a special note about the return type.)</a>
+ * 
+ * 
+ * <a class="attr">@return </a><a class="varType">Bool</a>
+ *	<a class="true">T	This is what true means</a>
+ *	<a class="false">F	This is what false means</a>
+ * 	<a class="defaultVal">(D	Put the D after the default return value (the F or T))</a>
+ *	<a class="attrNote">(N	This is a special note about this parameter.)</a>
+ * 
+ * <a class="attr">@note </a><a class="gitName">&lt;github username&gt;</a> <a class="date">Date</a>
+ *	^	<a class="description">What did you want to note about this file? </a>
+ *	^	<a class="description">separate ideas should be in separate notes. </a>
+ *	^	<a class="description">The brackets around the github name should not be included, it's just </a>
+ *		<a class="description">there to indicate that it is just one word.</a>
+ *	^	<a class="description">Date should be formatted as YYY-MM-DD, as stated in RFC 3339 section</a>
+ *		<a class="description">5.6 full-date definition</a>
+ *
+ * <a class="attr">@todo </a><a class="gitName">&lt;github username&gt;</a> <a class="date">Date</a>
+ *	^	<a class="description">What still needs to be done?  </a>
+ *	^	<a class="description">Each @todo should deal with a specific problem.</a>
+ *	^	<a class="description">The brackets around the github name should not be included, it's just</a>
+ *		<a class="description">there to indicate that it is just one word.</a>
+ *	^	<a class="description">Date should be formatted as YYYY-MM-DD, as stated in RFC 3339 section</a>
+ *		<a class="description">5.6 full-date definition.</a>
+ * 
+ */
+
+</pre>
+</body>
+</html>
