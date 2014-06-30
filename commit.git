@@ -1,11 +1,9 @@
-Question Section, Color Definition
+CommitColors.html
 
-Modified:
-1	CodingColors.html
+
+Created:
+1	CommitColors.html
 
 Reasons:
-1	Removed the color definitions, decided that if I wanted to change the 
-	the color, I would need to also update that section along with the 
-	css.  Also added a Questions section to help guide me in where I
-	am going with this.
-
+1	This will be the companion to CodingColors.html. This is how one is to 
+	document their changes in code.  
