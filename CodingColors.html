@@ -3,14 +3,14 @@
 	<title>Noremac's Code Documentation Style</title>
 	<style>
 		* {
-			font-size:13px;
+			font-size: 13px;
 		}
 		body {
 			background: black;
 			color: grey;
 		}
 		.attr {
-			color:#00b050;
+			color: #00b050;
 		}
 		.description {
 			color: #a6a6a6;
@@ -30,13 +30,13 @@
 
 		}
 		.strExample {
-			color:#7f7f00;
+			color: #7f7f00;
 		}
 		.defaultVal {
-			color:#5b9bd5;
+			color: #5b9bd5;
 		}
 		.attrNote {
-			color:#806000;
+			color: #806000;
 		}
 		.date {
 			font-style: italic;
@@ -51,53 +51,66 @@
 			color: #ff0000;
 		}
 		.errorCause {
-			color:#aaaa00;
+			color: #aaaa00;
 		}
 
 		.errorFix {
-			color:#00ffff;
+			color: #00ffff;
 		}
 	</style>
 </head>
 <body>
+<article>
+<section>
+	<h3>Var Types:</h3>
+	<ol>
+		<li>int (integer)</li>
+		<li>float</li>
+		<li>char (character)</li>
+		<li>folder (Path)</li>
+		<li>str (string)</li>
+		<li>file</li>
+		<li>bool (boolean)</li>
+		<li>Array</li>
+		<li>object</li>
+	</ol>
+</section>
 
-Var Types:
-<ol>
-	<li>int (integer)</li>
-	<li>float</li>
-	<li>char (character)</li>
-	<li>folder (Path)</li>
-	<li>str (string)</li>
-	<li>file</li>
-	<li>bool (boolean)</li>
-	<li>Array</li>
-	<li>object</li>
-</ol>
+<section>
+	<h3>Color Definitions</h3>
+	<ol>
+		<li class="attr     "  >@Attribute</li>
+		<li class="description">Description</li>
+		<li class="varName"    >Variable Name</li>
+		<li class="varType"    >Variable Type</li>
+		<li class="optional"   >Optional</li>
+		<li class="strFormat"  >String Format (F)</li>
+		<li class="strExample" >String Example (E)</li>
+		<li class="defaultVal" >Default Value (D)</li>
+		<li class="attrNote"   >Attribute Note (N)</li>
+		<li class="date"       >Date</li>
+		<li class="gitName"    >&lt;Git Username&gt;</li>
+		<li class="errorCause" >Cause of Error (C)</li>
+		<li class="errorFix"   >How to fix the Error (F)</li>
+	</ol>
+</section>
 
-<ol>
-	<li class="attr     "  >@Attribute</li>
-	<li class="description">Description</li>
-	<li class="varName"    >Variable Name</li>
-	<li class="varType"    >Variable Type</li>
-	<li class="optional"   >Optional</li>
-	<li class="strFormat"  >String Format (F)</li>
-	<li class="strExample" >String Example (E)</li>
-	<li class="defaultVal" >Default Value (D)</li>
-	<li class="attrNote"   >Attribute Note (N)</li>
-	<li class="date"       >Date</li>
-	<li class="gitName"    >&lt;Git Username&gt;</li>
-	<li class="errorCause" >Cause of Error (C)</li>
-	<li class="errorFix"   >How to fix the Error (F)</li>
-</ol>
-
-Default Color Scheme
-<ol>
-	<li>0, 176, 80</li>
-	<li>166, 166, 166 - Italic</li>
-	<li>255, 192, 0</li>
-	<li>244, 176, 131 - Italic </li>
-</ol>
-</p>
+<section>
+	<h2>Questions</h2>
+	<ul>
+		<li>If an array or object is defined somewhere in the file, then ?</li>
+		<li>How would you go about defining an object?</li>
+		<li>Will there be a way to indicate a recursive function?</li>
+		<li>How do I indicate initializers?</li>
+		<li>How about an initializing list?</li>
+		<li>How to document classes?</li>
+		<li>Will there ever be a way to format the file header info?</li>
+		<li>Should I Also add the commit style to this page too?</li>
+		<li>Need to note that anything in () is not required</li>
+		<li>If a function returns something, then it must have the @return attribute</li>
+	</ul>
+</section>
+<section>
 <pre>
 /**<a class="attr">@fun </a>name(<a class="varName">$var, $var1</a>='default')</a>
  * 	^	<a class="description">Short description of what the function does.</a>
@@ -109,7 +122,8 @@ Default Color Scheme
  * 
  * <a class="attr">@param </a><a class="varName">$var </a> <a class="varType">| Var Type</a> <a class="optional">(| Optional)</a>
  * 	^	<a class="description">What does this variable represent?</a>
- *		<a class="description">If multiple lines, omit the ^ symbol.</a>
+ *		<a class="description">If you exceed 80 characters on a line, go to the next line,</a>
+ *		<a class="description">and omit the ^ symbol.</a>
  *	<a class="strFormat">(F	This is the format of the string you expect for the function.)</a>
  *	<a class="strExample">(E	This will be an example of that format)</a>
  * 	<a class="defaultVal">(D	"This is the default value, if it's a string, use double quotes.")</a>
@@ -117,14 +131,15 @@ Default Color Scheme
  *	
  * <a class="attr">@param </a><a class="varName">$var</a> <a class="varType">| Bool</a> <a class="optional">(| Optional)</a>
  * 	^	<a class="description">What does this variable represent?</a>
- *		<a class="description">If multiple lines, omit the ^ symbol.</a>
+ *		<a class="description">If you exceed 80 characters on a line, go to the next line</a>
+ *		<a class="description">and omit the ^ symbol</a>
  *	<a class="true">T	This is what true means</a>
  *	<a class="false">F	This is what false means</a>
  * 	<a class="defaultVal">(D	Put the D after the default return value (the F or T))</a>
  *	<a class="attrNote">(N	This is a special note about this parameter.)</a>
  * 
  * <a class="attr">@param </a><a class="varName">$arrayname</a> <a class="varType">| Array</a> | <a class="varName">[$array, $elements]</a> <a class="optional">(| Optional)</a></a>
- * 	^	<a class="description">Description of the array</a>
+ * 	^	<a class="description">Description of the array or object</a>
  *	<a class="attrNote">(N	This is where you put a note that effects the array in its entirety. </a>
  *		<a class="attrNote">If the note is more related to a specific element in the array, then</a>
  *		<a class="attrNote">put it with that element.)</a>
@@ -183,5 +198,9 @@ Default Color Scheme
  */
 
 </pre>
+
+</section>
+</article>
+
 </body>
 </html>

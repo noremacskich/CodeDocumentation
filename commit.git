@@ -1,14 +1,11 @@
-Added HTML version of Color Coding
+Question Section, Color Definition
 
-Created:
+Modified:
 1	CodingColors.html
 
 Reasons:
-1	Using html will allow me to format and color the comments on the fly
-	and it is not reliant on an office suite.
+1	Removed the color definitions, decided that if I wanted to change the 
+	the color, I would need to also update that section along with the 
+	css.  Also added a Questions section to help guide me in where I
+	am going with this.
 
-Deleted:
-1	CodingColors.doc
-
-Reasons:
-1	I will no longer be using this, will be using the html version instead.
