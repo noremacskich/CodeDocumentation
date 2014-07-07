@@ -108,6 +108,7 @@
 		<li>Should I Also add the commit style to this page too?</li>
 		<li>Need to note that anything in () is not required</li>
 		<li>If a function returns something, then it must have the @return attribute</li>
+		<li>Tab vs Spaces usage</li>
 	</ul>
 </section>
 <section>
@@ -126,9 +127,13 @@
  *		<a class="description">was modified.</a>
  *	^	<a class="description">@mod is short for @modified.</a>
  *
- * <a class="attr">@reqs </a>(Jquery, JqueryUI, NodeJS, etc.)</a>
- *	^	<a class="description">Short description of why this is needed.</a>
- *	^	<a class="description">@reqs is short for @requirements</a>
+ * <a class="attr">@preqs </a>
+ *	^	<a class="description">This is where the requirements, assumptions, and prerequisites</a>
+ *		<a class="description">are stated for this function.</a>
+ *	^	<a class="description">Each requirement, assumption, and perrequisite needs to be on</a>
+ *		<a class="description">it's own line.</a>
+ *	^	<a class="description">@preqs is short for @prerequisites</a>
+ *	^	<a class="description">Assumptions for this function must be stated here</a>
  * 
  * <a class="attr">@param </a><a class="varName">$var </a> <a class="varType">| Var Type</a> <a class="optional">(| Optional)</a>
  * 	^	<a class="description">What does this variable represent?</a>

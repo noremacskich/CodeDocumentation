@@ -1,9 +1,15 @@
-@auth @mod added
+Changed @reqs to @preqs
 
+Renamed:
+1	CodingColors.html : @reqs -> @preqs
+
+Reasons:
+1	This is now where you put anything that is assumed for this function,
+	as well as anything that this function requires.  Assumptions must go
+	here as well.
 
 Modified:
 1	CodingColors.html
 
 Reasons:
-1	Added the @auth attribute and the @mod attribute.  Seperated out dates
-	with |. Added what @param stands for.
+1	Added question for tab vs space usage.
