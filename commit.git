@@ -1,14 +1,20 @@
-Directory Cleanup
+Git Plugin Start
 
-Deleted:
-1	commit_notes.txt
-2	long_function_notes.txt
-3	short_function_notes.txt
-4	short_function_samples.txt
-5	long_function_samples.txt
+Created:
+1	noremacDoc/
+2	^	git-noremacDoc 
+3		^	: version()
+4		^	: usage()
+5		^	: main()
 
 Reasons:
-1-5	No longer need these, kept in repository for personal reference.
+1	This is the directory for the git plugin that implements the commenting
+	style in git.
+2	This is the primary script file for this plugin.
+3	Allows users to find out what version they are using
+4	Allows users to find out what they can do with this
+5	This is the main script
 
-Note:
-1	Keeping commit_samples.txt to help flesh out CommitColors.html.
+Notes:
+1	Following git plugin guide from http://goo.gl/r1TI4o 
+2	Part 2 will be done later.
