@@ -1,9 +1,9 @@
-CommitColors.html
+@auth @mod added
 
 
-Created:
-1	CommitColors.html
+Modified:
+1	CodingColors.html
 
 Reasons:
-1	This will be the companion to CodingColors.html. This is how one is to 
-	document their changes in code.  
+1	Added the @auth attribute and the @mod attribute.  Seperated out dates
+	with |. Added what @param stands for.

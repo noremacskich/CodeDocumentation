@@ -116,14 +116,25 @@
  * 	^	<a class="description">Short description of what the function does.</a>
  *	^	<a class="description">@fun is short for @function</a>
  *
+ * <a class="attr">@auth </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
+ *	^	<a class="description">This holds the author of this function as well as the function</a>
+ *		<a class="description">creation date.</a>
+ *	^	<a class="description">@auth is short for @author</a>
+ *
+ * <a class="attr">@mod </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
+ *	^	<a class="description">This will hold who last modified the function and the date it</a>
+ *		<a class="description">was modified.</a>
+ *	^	<a class="description">@mod is short for @modified.</a>
+ *
  * <a class="attr">@reqs </a>(Jquery, JqueryUI, NodeJS, etc.)</a>
  *	^	<a class="description">Short description of why this is needed.</a>
  *	^	<a class="description">@reqs is short for @requirements</a>
  * 
  * <a class="attr">@param </a><a class="varName">$var </a> <a class="varType">| Var Type</a> <a class="optional">(| Optional)</a>
  * 	^	<a class="description">What does this variable represent?</a>
- *		<a class="description">If you exceed 80 characters on a line, go to the next line,</a>
+ *	^	<a class="description">If you exceed 80 characters on a line, go to the next line,</a>
  *		<a class="description">and omit the ^ symbol.</a>
+ *	^	<a class="description">@param is short for @parameter</a>
  *	<a class="strFormat">(F	This is the format of the string you expect for the function.)</a>
  *	<a class="strExample">(E	This will be an example of that format)</a>
  * 	<a class="defaultVal">(D	"This is the default value, if it's a string, use double quotes.")</a>
@@ -133,6 +144,8 @@
  * 	^	<a class="description">What does this variable represent?</a>
  *		<a class="description">If you exceed 80 characters on a line, go to the next line</a>
  *		<a class="description">and omit the ^ symbol</a>
+ *	^	<a class="description">@param is short for @parameter</a>
+ *	<a class="strFormat">(F	This is the format of the string you expect for the function.)</a>
  *	<a class="true">T	This is what true means</a>
  *	<a class="false">F	This is what false means</a>
  * 	<a class="defaultVal">(D	Put the D after the default return value (the F or T))</a>
@@ -140,7 +153,9 @@
  * 
  * <a class="attr">@param </a><a class="varName">$arrayname</a> <a class="varType">| Array</a> | <a class="varName">[$array, $elements]</a> <a class="optional">(| Optional)</a></a>
  * 	^	<a class="description">Description of the array or object</a>
+ *	^	<a class="description">@param is short for @parameter</a>
  *	<a class="attrNote">(N	This is where you put a note that effects the array in its entirety. </a>
+ *	<a class="strFormat">(F	This is the format of the string you expect for the function.)</a>
  *		<a class="attrNote">If the note is more related to a specific element in the array, then</a>
  *		<a class="attrNote">put it with that element.)</a>
  *
@@ -179,7 +194,7 @@
  * 	<a class="defaultVal">(D	Put the D after the default return value (the F or T))</a>
  *	<a class="attrNote">(N	This is a special note about this parameter.)</a>
  * 
- * <a class="attr">@note </a><a class="gitName">&lt;github username&gt;</a> <a class="date">Date</a>
+ * <a class="attr">@note </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
  *	^	<a class="description">What did you want to note about this file? </a>
  *	^	<a class="description">separate ideas should be in separate notes. </a>
  *	^	<a class="description">The brackets around the github name should not be included, it's just </a>
@@ -187,7 +202,7 @@
  *	^	<a class="description">Date should be formatted as YYY-MM-DD, as stated in RFC 3339 section</a>
  *		<a class="description">5.6 full-date definition</a>
  *
- * <a class="attr">@todo </a><a class="gitName">&lt;github username&gt;</a> <a class="date">Date</a>
+ * <a class="attr">@todo </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
  *	^	<a class="description">What still needs to be done?  </a>
  *	^	<a class="description">Each @todo should deal with a specific problem.</a>
  *	^	<a class="description">The brackets around the github name should not be included, it's just</a>
