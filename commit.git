@@ -1,15 +1,14 @@
-Changed @reqs to @preqs
+Directory Cleanup
 
-Renamed:
-1	CodingColors.html : @reqs -> @preqs
-
-Reasons:
-1	This is now where you put anything that is assumed for this function,
-	as well as anything that this function requires.  Assumptions must go
-	here as well.
-
-Modified:
-1	CodingColors.html
+Deleted:
+1	commit_notes.txt
+2	long_function_notes.txt
+3	short_function_notes.txt
+4	short_function_samples.txt
+5	long_function_samples.txt
 
 Reasons:
-1	Added question for tab vs space usage.
+1-5	No longer need these, kept in repository for personal reference.
+
+Note:
+1	Keeping commit_samples.txt to help flesh out CommitColors.html.
