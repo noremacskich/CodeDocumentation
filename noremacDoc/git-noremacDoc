@@ -1,32 +1,44 @@
+#! /usr/bin/env sh
+
 ##@fun version()
 #	^	Displays the version of this file
+#
 # @auth Adam Brett | 2013/07/12
 #
-# @modified NoremacSkich | 2014/07/07
+# @modified NoremacSkich | 2014/07/08
+#
+# @src http://goo.gl/r1TI4o
 #
 version() {
-	echo "noremacDoc v0.1.0"
+	echo "noremacDoc v0.1.1"
 	echo
 }
+
 ##@fun usage()
 #	^	Displays the version of this file
+#
 # @auth Adam Brett | 2013/07/12
 #
-# @modified NoremacSkich | 2014/07/07
+# @modified NoremacSkich | 2014/07/08
 #
-
+# @src http://goo.gl/r1TI4o
+#
 usage() {
 	echo "usage: git noremacDoc <subcommand>"
 	echo
 	echo "Available subcommands are:"
-	echo "hello <name>  Print out Hello World or Hello <name> (if provided)"}
+	echo "hello <name>  Print out Hello World or Hello <name> (if provided)"
+}
+
 ##@fun main()
 #	^	Displays the version of this file
+#
 # @auth Adam Brett | 2013/07/12
 #
-# @modified NoremacSkich | 2014/07/07
+# @modified NoremacSkich | 2014/07/08
 #
-
+# @src http://goo.gl/r1TI4o
+#
 main() {
 	#if the number of options is less than 1
 	if [ "$#" -lt 1 ]; then
@@ -43,7 +55,7 @@ main() {
 	
 	#See if they inputed a valid subcommand, then exit successfully
 	#this is how switch is done in bash
-	case $subcommand in
+	case "$subcommand" in
 		"-h"|"--help")
 		usage; exit 0
 		;; #break
@@ -58,16 +70,16 @@ main() {
 	
 	#see if subcommand exists, if not, exit with error 1
 	#while displaying usage
-	if [ ! -e "$WORKINGDIR/git-adamcodes-$subcommand" ]; then
+	if [ ! -e "$WORKINGDIR/git-noremacDoc-$subcommand" ]; then
 		usage; exit 1
 	fi
 	
 	#The sub command works, now load it into the shell
-	source "$WORKINGDIR/git-adamcodes-$subcommand"
+	source "$WORKINGDIR/git-noremacDoc-$subcommand"
 	
 	#test to make sure sub command exists, 
 	#if not, print usage and exit with error 1
-	if [ ! type "cmd_$subcommand" ]; then
+	if [ ! "type cmd_$subcommand" ]; then
 		usage; exit 1
 	fi
 	
