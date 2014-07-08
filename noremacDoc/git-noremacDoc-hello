@@ -1,0 +1,70 @@
+#!/usr/bin/env sh
+
+##@fun usage()
+#	^	Displays how to use this command
+#
+# @auth Adam Brett | 2013/07/19
+#
+# @mod NoremacSkich | 2014/07/07
+# 
+# @src http://goo.gl/ij9kPR | 2014/07/07
+#
+usage() {
+	echo "usage: git noremacDoc hello [name]"
+	echo
+}
+
+##@fun cmd_hello()
+#	^	Determines what to print out, either "World" or 
+#		what the user specified.
+#
+# @auth Adam Brett | 2013/07/19
+#
+# @mod NoremacSkich | 2014/07/07
+# 
+# @src http://goo.gl/ij9kPR | 2014/07/07
+#
+cmd_hello() {
+	#If there isn't any arguments
+	if [ "$#" -lt 1 ]; then
+		#Print "Hello World"
+		say_hello World
+		#Then exit gracefully
+		exit 0
+	#Check to see if correct usage of sub-command
+	elif [ "$#" -eq 1 ]; then
+		#if they just typed help, 
+		if [ $1 == "help" ]; then
+			#print usage
+			usage
+			#and exit gracefully
+			exit 0
+		fi
+		#if not, print out "Hello {user input}"
+		say_hello $1; 
+
+		#and exit gracefully
+		exit 0
+	fi
+	
+	#They didn't use the command right, print out the usage
+	usage
+	#and exit with error of 1
+	exit 1
+}
+
+##@fun say_hello()
+#	^	Prints out Hello {input}
+#
+# @auth Adam Brett | 2013/07/19
+#
+# @mod NoremacSkich | 2014/07/07
+# 
+# @src http://goo.gl/ij9kPR | 2014/07/07
+#
+say_hello() {
+	#Print out the first arguement
+	echo "Hello ${1}"
+	echo
+}
+

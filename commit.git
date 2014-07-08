@@ -1,20 +1,22 @@
-Git Plugin Start
+Finish Tutorial, Added @src
 
 Created:
-1	noremacDoc/
-2	^	git-noremacDoc 
-3		^	: version()
-4		^	: usage()
-5		^	: main()
+1	noremacDoc/git-noremacDoc-hello
+2	^	usage()
+3	^	cmd_hello()
+4	^	say_hello()
+5	CodingColors.html : @src Attribute
 
 Reasons:
-1	This is the directory for the git plugin that implements the commenting
-	style in git.
-2	This is the primary script file for this plugin.
-3	Allows users to find out what version they are using
-4	Allows users to find out what they can do with this
-5	This is the main script
+1	This holds the subcommand
+2	This prints out how to use the sub command
+3	Determines what to print out, either "World" or what the user specified
+4	Prints out Hello {user input}
+5	This will be used to document when a function is based off of work done
+	by someone else.
 
-Notes:
-1	Following git plugin guide from http://goo.gl/r1TI4o 
-2	Part 2 will be done later.
+Modified:
+1	CommitColors.html
+
+Reasons:
+1	Added two more questions
