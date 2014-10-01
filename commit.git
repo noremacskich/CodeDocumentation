@@ -1,19 +1,13 @@
-Questions to Issues, Protection Status
-
-Modified:
-1	CodingColors.html : Questions
-
-Reasons:
-1	I moved these questions to the github issue tracker.
+Notepad++ Implementation Started
 
 Created:
-1	CodingColors.html : Goal
-2	^	:	Protection Status
-3	^	:	fpvProtection
+1	Notepad++Implementation.cs
+2	Notepad++Implementation.cs : run()
+3	Notepad++Implementation.cs : getAuthor()
+
 
 Reasons:
-1	This states the goal of this project.
-2	This is the protection status of the function, parameter, or variable
-	ie private, public, or protected.
-3	This css class will be used to control the Protection Status color
-
+1	This will be using the Automation plugin in Notepad++ to create the 
+	documentation structure for each function
+2	This is what will run the script
+3	This will insert the author line at the current cursor position.
