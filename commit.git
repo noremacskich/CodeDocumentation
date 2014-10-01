@@ -1,20 +1,20 @@
-Simple Documentation completed
+Simple Parameter and Return Stubs
 
 Created:
-1	Notepad++Implementation.cs : getFunction()
+1	Notepad++Implementation.cs : generateBasicParam()
+2	Notepad++Implementation.cs : generateBasicReturn()
 
 Reasons:
-1	This will parse the function header and return the @fun line, with the 
-	description line.
-	
-----------
+1	This function will only return the description and the default
+	value if there is any. The rest of the values are up to the 
+	programmer to impliment.
+2	This function will generate a basic return document attribute.
+	The properties of that attribute will be the description, and
+	the default return type, if there is one.
 	
 Modified:
 1	Notepad++Implementation.cs : getAuthor()
-1	Notepad++Implementation.cs : Run()
+2	Notepad++Implementation.cs : getFunction()
 
 Reasons:
-1	Will now return the string it generates, instead of directly inserting it 
-	into the documentation.
-2	This will now generate the whole function documentation, and will insert it
-	where the current cursor is.
+1-2	Added a space after the astricks, to push the tab over the tab stop
