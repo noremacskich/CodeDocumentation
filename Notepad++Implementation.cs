@@ -5,14 +5,23 @@ public class Script : NppScript
 {
 	
 	/**@fun Run()
-	 * 	^	This is what will run the script
+	 * 	^	This will generate the whole function documentation, and will insert 
+	 * 		it where the current cursor is.
 	 * 
 	 *	@author NoremacSkich | 2014/10/01
 	 *
 	 */
     public override void Run()
     {
-		getAuthor();
+		string documentation = getFunction();
+		
+		documentation += getAuthor();
+				
+		documentation += " */" + Environment.NewLine;
+		
+		// Find the current cursor placement, replace the selection with the
+		// dateTime string
+		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, documentation);
     }
 	
 	/**@fun getAuthor()
@@ -23,7 +32,7 @@ public class Script : NppScript
 	 * 
 	 */
 
-	public void getAuthor(){
+	public string getAuthor(){
 		// Create the date type
 		DateTime currentDate = new DateTime();
 		
@@ -37,10 +46,39 @@ public class Script : NppScript
 		string author = "NoremacSkich";
 
 		// Put it all together in the author line
-        string dateTime = " *	@author " + author + " | " + finalDate;
+        string dateTime = " *	@author " + author + " | " + finalDate + Environment.NewLine;
         
-		// Find the current cursor placement, replace the selection with the
-		// dateTime string
-		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, dateTime);
+		dateTime += " * " + Environment.NewLine;
+		
+		return dateTime;
+		
 	}
+	
+	/**@fun getFunction()
+	 * 	^	This will parse the function header and return the @fun line with
+	 * 		the description line.
+	 * 
+	 * @return | String
+	 * 	^	This is the correctly formatted function string
+	 * 	E	/**@fun getFunction()
+	 * 		 *	^	
+	 * 
+	 * @author NoremacSkich | 2014/10/01
+	 * 
+	 */
+	public string getFunction(){
+		
+		// Parse for the function line
+		string functionLine = "foo()";
+		
+		// Put all the info together
+		string finalString = " /**@fun " + functionLine + Environment.NewLine;
+		
+		// This is the description line
+		finalString += " *	^	" + Environment.NewLine;
+		finalString += " * " + Environment.NewLine;
+		// And return the function line
+		return finalString;
+	}
+	
 }
