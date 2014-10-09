@@ -1,20 +1,24 @@
-Simple Parameter and Return Stubs
+Now can grab line and get Parameter List
 
 Created:
-1	Notepad++Implementation.cs : generateBasicParam()
-2	Notepad++Implementation.cs : generateBasicReturn()
+1	Notepad++Implementation.cs : GetLine(int line)
+2	Notepad++Implementation.cs : getParameters(string parameterList)
 
 Reasons:
-1	This function will only return the description and the default
-	value if there is any. The rest of the values are up to the 
-	programmer to impliment.
-2	This function will generate a basic return document attribute.
-	The properties of that attribute will be the description, and
-	the default return type, if there is one.
-	
+1	This will grab the contents fo the provided line number
+2	This will check for parameters the parameter list, and will return 
+	the entire list if found
+
 Modified:
 1	Notepad++Implementation.cs : getAuthor()
 2	Notepad++Implementation.cs : getFunction()
+3	Notepad++Implementation.cs
+4	Notepad++Implementation.cs : generateBasicParam()
+5	Notepad++Implementation.cs : generateBasicReturn()
 
 Reasons:
 1-2	Added a space after the astricks, to push the tab over the tab stop
+3	Added the System.Text library
+4-5	Fixed missing semicolons and NewLine Typos.
+4	changed optionalParam to a bool with value of true
+5	Removed the optional parameter if statements
