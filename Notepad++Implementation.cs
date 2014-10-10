@@ -4,26 +4,145 @@ using NppScripts;
 
 public class Script : NppScript{
 	
+	
+	/**@fun int GetCaretLine()
+	 *  	^	This will get the current line number that the cursor is on.
+	 * 
+	 *	@return  | Integer
+	 *		^	This will return the current line number that the cursor is on.
+	 *
+	 *	@author NoremacSkich | 2014/10/09
+	 * 
+	 */
+	int GetCaretLine(){
+        var sci = Npp.CurrentScintilla;
+        int currentPos = (int)Win32.SendMessage(sci, SciMsg.SCI_GETCURRENTPOS, 0, 0);
+        return (int)Win32.SendMessage(sci, SciMsg.SCI_LINEFROMPOSITION, currentPos, 0);
+    }
+	
+	/**@fun public void printLine(string line)
+	 *  	^	This will insert the input where the cursor is.
+	 * 
+	 *	@param line | string
+	 *		^	This is the input that will be put where the current cursor.
+	 *
+	 *	@author NoremacSkich | 2014/10/09
+	 * 
+	 */
+	public void printLine(string line){
+		// Find the current cursor placement, replace the selection with the
+		// dateTime string
+		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, line);
+	}
+	
+
+	/**@fun public int indentLevel(string line)
+	*  	^	This will return how many levels of indentation there are.
+	* 	N	This will be based on the number of tabs on the current line.
+	* 
+	*	@param line | string
+	*		^	This is a copy of the line the function resides on
+	*
+	*	@return | Integer
+	*		^	This is the number of tabs that is in the line
+	*		N	It is assumed that all tabs are at the start of line.
+	*
+	*	@author NoremacSkich | 2014/10/09
+	* 
+	*/
+	public int indentLevel(string line){
+		
+		return line.Split('\t').Length - 1;
+	}
+	
 	/**@fun Run()
 	 *  	^	This will generate the whole function documentation, and will insert 
 	 *  		it where the current cursor is.
 	 * 
 	 * @author NoremacSkich | 2014/10/01
+	 * @modified NoremacSkich | 2014/10/09
 	 *
 	 */
     public override void Run(){
+		//int lineNum= 30;
+		
+		int indentToLevel = indentLevel( GetLine( GetCaretLine() ) );
+		
+		string indent = new String('\t', 5);
 		
 		string documentation = getFunction();
 		
+		
+		// This is the process for getting parameters
+		string parameters = getParameters( GetLine( GetCaretLine() ) );
+		
+		string [] paramArray = parameters.Split(new Char[] {','});
+		
+		foreach(string param in paramArray){
+			
+			// Determine the parameter name
+			string paramName = "";
+			
+			// this determines the optional state
+			bool optionalParam = false;
+			
+			// Determine the Parameter Type
+			string paramType = "";
+			
+			
+			if(param.IndexOf('=') >=0 ){
+				
+				optionalParam = true;
+			}
+
+			// Get rid of padding around text
+			//param = param;
+			
+			// Then, lets split up the parameter with spaces
+			string [] paramSplit = param.Trim().Split(new Char[] {' '});
+			
+			//printLine(paramSplit.Length.ToString());
+			// First lets see if there is only one word
+			if(paramSplit.Length == 1){
+				
+				// We will assume that this is the the variable name
+				paramName = paramSplit[0];
+				
+			}else{
+				
+				// Assume the first one is refering to parameter type
+				paramType = paramSplit[0];
+				
+				// And that the second one is the variable name
+				paramName = paramSplit[1];
+				
+				//foreach(string subParam in paramSplit){
+					// 
+					
+					// Seperate out the visibility, parameter name, and 
+					// default value
+					
+				//}
+			}
+			
+			documentation += generateBasicParameter( paramName, paramType, optionalParam);
+		}
+		
+		//for(int i = 0; i<20; i++){
+		//printLine(GetLine(GetCaretLine()));
+		//}
+			
 		documentation += getAuthor();
 				
 		documentation += " */" + Environment.NewLine;
 		
-		// Find the current cursor placement, replace the selection with the
-		// dateTime string
-		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, documentation);
+		documentation.Replace("\n\r", ("\n\r" + indent) );
+		
+		
+		printLine(documentation);
+		
     }
-	
+
 	/**@fun getAuthor()
 	 *  	^	This will insert the author line at the current cursor position.
 	 *  	N	This will also replace any selected text
@@ -33,9 +152,9 @@ public class Script : NppScript{
 	 *  	E	 * @author NoremacSkich | 2014/10/01
 	 *   		 * 
 	 * @author NoremacSkich | 2014/10/01
+	 * @modified NoremacSkich | 2014/10/09
 	 * 
 	 */
-
 	public string getAuthor(){
 		// Create the date type
 		DateTime currentDate = new DateTime();
@@ -50,7 +169,7 @@ public class Script : NppScript{
 		string author = "NoremacSkich";
 
 		// Put it all together in the author line
-        string dateTime = " *  	@author " + author + " | " + finalDate + Environment.NewLine;
+        string dateTime = " *	@author " + author + " | " + finalDate + Environment.NewLine;
         
 		dateTime += " * " + Environment.NewLine;
 		
@@ -84,11 +203,21 @@ public class Script : NppScript{
 		// And return the function line
 		return finalString;
 	}
-	
 	/**@fun generateBasicParameter()
 	 *  	^	This function will only return the description and the default
 	 *  		value if there is any. The rest of the values are up to the 
 	 *  		programmer to impliment.
+	 *
+	 *	@param paramName | string
+	 *		^	This is the name of the parameter
+	 *
+	 *	@param paramType | string
+	 *		^	This is the parameter type
+	 *		E	Integer, String, etc
+	 *
+	 *	@param optionalParam | bool
+	 *		T	The string " | Optional" will be displayed
+	 *		F	The string will not be displayed
 	 * 
 	 * @return | String
 	 *  	^	The string will have all attributes needed for a parameter
@@ -98,7 +227,7 @@ public class Script : NppScript{
 	 * @author NoremacSkich | 2014/10/01
 	 *
 	 */
-	public string generateBasicParameter(){
+	public string generateBasicParameter(string paramName, string paramType, bool optionalParam){
 		/**
 		 * @param $var  | Var Type (| Optional)
 		 * 	^	What does this variable represent?
@@ -111,13 +240,13 @@ public class Script : NppScript{
 		 *	(N	This is a special note about this parameter.)
 		 */
 		
-		bool optionalParam = true;
-		string variable      = "testVar";
-		string varType       = "Integer";
-		string optional      = "";
-		string defaultValue  = "This is the default value, if it's a string, use double quotes.";
+		//bool optionalParam = true;
+		//string variable      = "testVar";
+		//string varType       = "Integer";
+		string optionalString      = "";
+		string defaultValue        = "This is the default value, if it's a string, use double quotes.";
 		
-		string spacer = "";
+		string spacer          = "";
 		
 		string defaultLine     = "";
 		string paramLine       = "";
@@ -125,14 +254,14 @@ public class Script : NppScript{
 		
 		
 		if(optionalParam){
-			optional = " | Optional";
+			optionalString = " | Optional";
 		}
 		
-		paramLine       = " * @param " + variable + " | " + varType + optional + Environment.NewLine;
-		descriptionLine = " *  	^	" + Environment.NewLine;
-		spacer          = " * " + Environment.NewLine;
-		defaultLine     = " *  	D	" + defaultValue + Environment.NewLine;
-		spacer          = " * " + Environment.NewLine;
+		paramLine       = " *	@param " + paramName + " | " + paramType + optionalString + Environment.NewLine;
+		descriptionLine = " *		^	" + Environment.NewLine;
+		spacer          = " *" + Environment.NewLine;
+		defaultLine     = " *		D	" + defaultValue + Environment.NewLine;
+		spacer          = " *" + Environment.NewLine;
 		
 		string returnString = "";
 		
@@ -256,6 +385,7 @@ public class Script : NppScript{
 		if(string.IsNullOrWhiteSpace(parameterList)){
 		
 			// The string is null or has whitspaces, return an empty string
+			printLine("WhiteSpace");
 			return String.Empty;
 		}
 		
@@ -263,6 +393,7 @@ public class Script : NppScript{
 		// of the parameter list is within the provided string
 		if(!parameterList.Contains(parameterStart) && !parameterList.Contains(parameterEnd)){
 			
+			printLine("no " + parameterStart + " " + parameterEnd);
 			// Then this has no parameters, return an empty string
 			return String.Empty;
 		}
@@ -298,7 +429,7 @@ public class Script : NppScript{
 		string fullParamList = String.Empty;
 		try{
 			// Lets grab that substring
-			fullParamList = parameterList.Substring(startParamList, endParamList);
+			fullParamList = parameterList.Substring(startParamList, endParamList - startParamList);
 			// returns empty if startParamList is equal to parameterList.Length and
 			// endParamList is 0
 
@@ -306,9 +437,9 @@ public class Script : NppScript{
 			// Throws ArgumentOutOfRangeException if startParamList + endParamList 
 			// is longer than the string 
 			// Or if either startParamList or EndParamList are less than zero
-			
+			printLine("out of range " + startParamList + " " + (endParamList - startParamList));
 		}
-		
+		//printLine(fullParamList);
 		// We can now return the parameter list
 		return fullParamList;
 	}
