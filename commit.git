@@ -1,38 +1,19 @@
-Generate Parameters and Debug Statements.
+Moving cursor to lines and Function Documentation.
 
 Created:
-1	Notepad++Implementation.cs : int GetCaretLine()
-2	Notepad++Implementation.cs : public void printLine(string line)
-3	Notepad++Implementation.cs : public int indentLevel(string line)
+1	Notepad++Implementation.cs : int MoveToLine(int line)
 
 Reasons:
-1	This will get the current line number that the cursor is on.
-2	This will insert the input where the cursor is.
-3		This will return how many levels of indentation there are.
+1	This will move the cursor to the designated line number.
 
 ---------
 
 Modified:
 1	Notepad++Implementation.cs : run()
-2	Notepad++Implementation.cs : string getParameters(string parameterList)
-3	Notepad++Implementation.cs : public string getAuthor()
+2	Notepad++Implementation.cs 
 
 
 Reasons:
-1	Will now parse parameters, still a bit buggy.
-2	Added debugging statements to the conditionals checking for whitespace, null,
-	and the parameter brackets.
-^	Fixed the Substring statement, and added the out of range exception debug
-	statement.
-3	Modified spacing in front of parameter
-
----------
-
-Renamed
-1	Notepad++Implementation.cs : public string generateBasicParameter()
-	-> public string generateBasicParameter(string paramName, string paramType, bool optionalParam)
-	
-Reasons:
-1	Added some parameters that will transfer into the function to display the 
-	parameter markup.
-	
+1	Indentation is fixed.  Now inserts the documentation on the line before
+	the start of the function.
+2	Added documentation to all functions.

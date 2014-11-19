@@ -4,6 +4,108 @@ using NppScripts;
 
 public class Script : NppScript{
 	
+	// Have a global indent count
+	public int indentCount = 0;
+	
+	/**@fun public string parseFunctionSignature(string line)
+	 *  	^	This is the workhorse for creating the documentation
+	 * 
+	 *	@param line | string
+	 *		^	This is the line of text that will be parsed
+	 *
+	 *	@author NoremacSkich | 2014/10/11
+	 * 
+	 */
+	public string parseFunctionSignature(string line){	
+		
+		// So this will split up the function name, the parameter list, 
+		// visibility and return type.
+		
+		
+		//string functionSignature = "";  // This is how to identify a function
+		//int    indentLevelNum    = 0;   // This will keep track of the indent level for the function
+		//string paramList         = "";  // This will store the parameter list
+		string visibility        = "";  // This will store the Function Visibility
+		//string returnType        = "";  // This will store the Function return type
+		string functionDocumentation = ""; // This will store the entire function documentation.
+		
+		
+		// First, lets see if we can find the visibility of the function
+		      if( line.Contains("public")    ){ visibility = "Public";
+		}else if( line.Contains("private")   ){ visibility = "Private";
+		}else if( line.Contains("protected") ){ visibility = "Protected";
+		}else								  { visibility = null; }
+		
+		
+		
+		// Then lets see if we can find the parameters
+		return functionDocumentation;
+	}
+	
+	/**@fun public string genParam(string line)
+	 *  	^	This will generate the parameters for the documentation from
+	 *			the current line.
+	 * 
+	 *	@param line | string
+	 *		^	This is the line that has the function header.
+	 *
+	 *	@author NoremacSkich | 2014/10/11
+	 * 
+	 */
+	public string genParam(string line){
+		
+		// This will hold all the parameters to return
+		string documentation = "";
+		
+		// This should become the parameter list
+		string parameters = getParameters( line );
+		
+		// Split up the parameters based on the comma
+		string [] paramArray = parameters.Split(new Char[] {','});
+		
+		// For each parameter
+		foreach(string param in paramArray){
+			
+			// Determine the parameter name
+			string paramName = "";
+			
+			// this determines the optional state
+			bool optionalParam = false;
+			
+			// Determine the Parameter Type
+			string paramType = "";
+			
+			if(param.IndexOf('=') >=0 ){
+				
+				optionalParam = true;
+			}
+
+			// Get rid of padding around text
+			//param = param;
+			
+			// Then, lets split up the parameter with spaces
+			string [] paramSplit = param.Trim().Split(new Char[] {' '});
+			
+			// First lets see if there is only one word
+			if(paramSplit.Length == 1){
+				
+				// We will assume that this is the the variable name
+				paramName = paramSplit[0];
+				
+			}else{
+				
+				// Assume the first one is refering to parameter type
+				paramType = paramSplit[0];
+				
+				// And that the second one is the variable name
+				paramName = paramSplit[1];
+				
+			}
+			
+			documentation += generateBasicParameter( paramName, paramType, optionalParam);
+		}
+		return documentation;
+	}
 	
 	/**@fun int GetCaretLine()
 	 *  	^	This will get the current line number that the cursor is on.
@@ -34,7 +136,23 @@ public class Script : NppScript{
 		// dateTime string
 		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, line);
 	}
-	
+
+	/**@fun public void MoveToLine(int line)
+	 *  	^	This will move the cursor to the designated line number.
+	 * 
+	 *	@param line | int
+	 *		^	This is the line number that you wish to jump to
+	 *
+	 *	@author rally25rs | 2012/03/20
+	 *	@src	http://goo.gl/XbVRL1 | 2014/11/19
+	 *
+	 *	@mod	NoremacSkich | 2014/11/19
+	 * 
+	 */	
+	public void MoveToLine(int line)
+	{
+		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_GOTOLINE, line, 0);
+	}
 
 	/**@fun public int indentLevel(string line)
 	*  	^	This will return how many levels of indentation there are.
@@ -66,80 +184,39 @@ public class Script : NppScript{
     public override void Run(){
 		//int lineNum= 30;
 		
-		int indentToLevel = indentLevel( GetLine( GetCaretLine() ) );
+		// First lets get the line we want to parse
+		string line = GetLine( GetCaretLine() );
 		
-		string indent = new String('\t', 5);
+		// Then lets get the indent level for the current line
+		indentCount = indentLevel( line );
 		
-		string documentation = getFunction();
-		
-		
-		// This is the process for getting parameters
-		string parameters = getParameters( GetLine( GetCaretLine() ) );
-		
-		string [] paramArray = parameters.Split(new Char[] {','});
-		
-		foreach(string param in paramArray){
-			
-			// Determine the parameter name
-			string paramName = "";
-			
-			// this determines the optional state
-			bool optionalParam = false;
-			
-			// Determine the Parameter Type
-			string paramType = "";
-			
-			
-			if(param.IndexOf('=') >=0 ){
+		string indent = new String('\t', indentCount );
 				
-				optionalParam = true;
-			}
+		// Now we need the function signature
+		string documentation = indent;
+		
+		// Get the function name
+		documentation += getFunction(line);
+		
+		// Then the parameters
+		documentation += genParam(line);
 
-			// Get rid of padding around text
-			//param = param;
-			
-			// Then, lets split up the parameter with spaces
-			string [] paramSplit = param.Trim().Split(new Char[] {' '});
-			
-			//printLine(paramSplit.Length.ToString());
-			// First lets see if there is only one word
-			if(paramSplit.Length == 1){
-				
-				// We will assume that this is the the variable name
-				paramName = paramSplit[0];
-				
-			}else{
-				
-				// Assume the first one is refering to parameter type
-				paramType = paramSplit[0];
-				
-				// And that the second one is the variable name
-				paramName = paramSplit[1];
-				
-				//foreach(string subParam in paramSplit){
-					// 
-					
-					// Seperate out the visibility, parameter name, and 
-					// default value
-					
-				//}
-			}
-			
-			documentation += generateBasicParameter( paramName, paramType, optionalParam);
-		}
-		
-		//for(int i = 0; i<20; i++){
-		//printLine(GetLine(GetCaretLine()));
-		//}
-			
+		// Next the author
 		documentation += getAuthor();
-				
-		documentation += " */" + Environment.NewLine;
 		
-		documentation.Replace("\n\r", ("\n\r" + indent) );
+		// Tie off hte end of the documentation
+		documentation += " */";
 		
+		// Indent everything to the correct indent level
+		documentation = documentation.Replace("\r\n", ("\r\n" + indent) );
 		
+		// Move the cursor to the line before the function call
+		MoveToLine( GetCaretLine() - 1 );
+		
+		// Insert the Documentation block
 		printLine(documentation);
+		
+		
 		
     }
 
@@ -177,25 +254,37 @@ public class Script : NppScript{
 		
 	}
 	
-	/**@fun getFunction()
+	/**@fun public string getFunction(string line)
 	 *  	^	This will parse the function header and return the @fun line with
 	 *  		the description line.
 	 * 
-	 * @return | String
+	 *	@param line | string
+	 *		^	This is a copy of the line the function resides on
+	 *
+	 *	@return | String
 	 *  	^	This is the correctly formatted function string
-	 *  	E	/**@fun getFunction()
+	 *  	E	/**@fun public string getFunction(string line)
 	 *  		 *	^	
 	 * 
 	 * @author NoremacSkich | 2014/10/01
 	 * 
 	 */
-	public string getFunction(){
+	public string getFunction(string line){
+				
+		// Get rid of leading and trailing spaces
+		line = line.Trim();
 		
-		// Parse for the function line
-		string functionLine = "foo()";
+		// Check to see if the function has a trailing {
+		if( line.EndsWith("{") ){
+			// If so, replace it.
+			line = line.Replace("{","");
+		}
+		
+		// Get rid of any additional white space
+		line = line.Trim();
 		
 		// Put all the info together
-		string finalString = " /**@fun " + functionLine + Environment.NewLine;
+		string finalString = "/**@fun " + line + Environment.NewLine;
 		
 		// This is the description line
 		finalString += " *  	^	" + Environment.NewLine;
