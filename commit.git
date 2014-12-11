@@ -1,33 +1,13 @@
-Indentation & Goal Update
+Parameter and Return Update
 
 ---------
 
 Modified:
-1	CodingColors.html : CSS
-2	CodingColors.html : Goal
-3	CodingColors.html
-4	readme.txt
-5	Notepad++Imple~.cs : Run()
+1	Notepad++Imple~.cs
+2	Notepad++Imple~.cs : public string generateBasicParameter(string paramName, string paramType, bool optionalParam)
+3	Notepad++Imple~.cs : public string generateBasicReturn(string returnType)
 
 Reasons:
-1	Made the font monospaced.  Made the background 40em wide.
-2	Updated the goal of the project to include a bit more flowery language.
-3	Reordered the way that the properties are ordered to be more consistent
-	with how I use them.
-4	Added how to use the working script that is provided.
-5	Updated it to handle the new way of handling indentation level.
-
----------
-
-Created:
-1	Notepadd++Implementation.cs : public string indentString(string line)
-
-Reasons:
-1	This will make sure that the documentation is indented at the correct level.
-
-
-Removed:
-1	Notepad++Imple~.cs : public int indentLevel(string line)
-
-Reasons:
-1	replaced the function with one that returns all the spacing for the function.
+1	Removed the global variable for the indent level.  Removed the reference from run() function.
+2	Added a switch statement to handle various types of parameters.  
+3	Added a returnType parameter.  

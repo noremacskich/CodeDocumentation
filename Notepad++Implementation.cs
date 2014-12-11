@@ -4,9 +4,6 @@ using NppScripts;
 
 public class Script : NppScript{
 	
-	// Have a global indent count
-	public int indentCount = 0;
-	
 	/**@fun public string parseFunctionSignature(string line)
 	 *  	^	This is the workhorse for creating the documentation
 	 * 
@@ -35,8 +32,6 @@ public class Script : NppScript{
 		}else if( line.Contains("private")   ){ visibility = "Private";
 		}else if( line.Contains("protected") ){ visibility = "Protected";
 		}else								  { visibility = null; }
-		
-		
 		
 		// Then lets see if we can find the parameters
 		return functionDocumentation;
@@ -198,9 +193,6 @@ public class Script : NppScript{
 		// First lets get the line we want to parse
 		string line = GetLine( GetCaretLine() );
 		
-		// Then lets get the indent level for the current line
-		indentCount = indentLevel( line );
-		
 		string indent = indentString( line );
 				
 		// Now we need the function signature
@@ -278,7 +270,7 @@ public class Script : NppScript{
 			
 		}else{
 		
-			return " *	@author ?? | ??" + Environment.NewLine;
+			return " *	@author ?? | ??" + Environment.NewLine + " * " + Environment.NewLine;
 		}
 		
 	}
@@ -321,6 +313,7 @@ public class Script : NppScript{
 		// And return the function line
 		return finalString;
 	}
+
 	/**@fun generateBasicParameter()
 	 *  	^	This function will only return the description and the default
 	 *  		value if there is any. The rest of the values are up to the 
@@ -364,12 +357,53 @@ public class Script : NppScript{
 		string optionalString      = "";
 		string defaultValue        = "This is the default value, if it's a string, use double quotes.";
 		
-		string spacer          = "";
+		string spacer          = " * " + Environment.NewLine;
 		
 		string defaultLine     = "";
 		string paramLine       = "";
 		string descriptionLine = "";
 		
+		string trueField = "";
+		string falseField = "";
+		
+		switch (paramType){
+			case "bool":
+				// Convert into the full Name
+				paramType="Boolean";
+				
+				// Add the true field to this description
+				trueField = " *		T	" + Environment.NewLine;
+				
+				// Add the false field to this description
+				falseField = " *		F	" + Environment.NewLine;
+			
+				break;
+			case "int":
+				// Convert to full name
+				paramType = "Integer";
+				
+				// Break this statement
+				break;
+				
+			case "string":
+				// Convert ot full name
+				paramType = "String";
+				
+				// Break this statement
+				break;
+			
+			case "char":
+				// Convert to full name
+				paramType = "Character";
+				
+				// Break the statement
+				break;
+			
+			default:
+			
+				break;
+			
+		}
 		
 		if(optionalParam){
 			optionalString = " | Optional";
@@ -377,14 +411,16 @@ public class Script : NppScript{
 		
 		paramLine       = " *	@param " + paramName + " | " + paramType + optionalString + Environment.NewLine;
 		descriptionLine = " *		^	" + Environment.NewLine;
-		spacer          = " *" + Environment.NewLine;
+		//spacer          = " *" + Environment.NewLine;
 		defaultLine     = " *		D	" + defaultValue + Environment.NewLine;
-		spacer          = " *" + Environment.NewLine;
+		//spacer          = " *" + Environment.NewLine;
 		
 		string returnString = "";
 		
 		returnString += paramLine;
 		returnString += descriptionLine;
+		returnString += trueField;
+		returnString += falseField;
 		returnString += spacer;
 		if(optionalParam){
 			returnString += defaultLine;
@@ -399,14 +435,16 @@ public class Script : NppScript{
 	 *  	^	This function will generate a basic return document attribute.
 	 *  		The properties of that attribute will be the description, and
 	 *  		the default return type, if there is one.
-	 * 
+	 *	@param returnType | string
+	 *			^	This denotes the return type for the function.
 	 * @return | String
 	 *  	^	The string will have all attributes needed for a basic return
 	 * 
 	 * @author NoremacSkich | 2014/10/01
+	 *	@modified NoremacSkich | 2014/12/10
 	 *
 	 */
-	public string generateBasicReturn(){
+	public string generateBasicReturn(string returnType){
 		/**
 		 * @return (Var Type)
 		 *	^	This is optional.
@@ -419,7 +457,7 @@ public class Script : NppScript{
 		
 		//string defaultReturn = "";
 		// This is the return type of the function
-		string varType       = "Integer";
+		//string varType       = "Integer";
 		// This will add the optional text after the var type
 		string optional      = "";
 		// This is the default return type for the function
@@ -434,7 +472,7 @@ public class Script : NppScript{
 		// This is the " *	^	This is optional." line
 		string descriptionLine = "";
 				
-		returnLine      = " * @return | " + varType + optional + Environment.NewLine;
+		returnLine      = " * @return " + returnType + optional + Environment.NewLine;
 		descriptionLine = " *  	^	" + Environment.NewLine;
 		spacer          = " * " + Environment.NewLine;
 		defaultLine     = " *  	D	" + defaultValue + Environment.NewLine;
