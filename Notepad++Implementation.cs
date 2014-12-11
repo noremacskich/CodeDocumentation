@@ -154,24 +154,35 @@ public class Script : NppScript{
 		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_GOTOLINE, line, 0);
 	}
 
-	/**@fun public int indentLevel(string line)
-	*  	^	This will return how many levels of indentation there are.
-	* 	N	This will be based on the number of tabs on the current line.
-	* 
-	*	@param line | string
-	*		^	This is a copy of the line the function resides on
-	*
-	*	@return | Integer
-	*		^	This is the number of tabs that is in the line
-	*		N	It is assumed that all tabs are at the start of line.
-	*
-	*	@author NoremacSkich | 2014/10/09
-	* 
-	*/
-	public int indentLevel(string line){
+	/**@fun public string indentString(string line)
+	 *  	^	This will grab the indentation for the line
+	 * 
+	 *	@param line | string
+	 *		^	This is the line that we are getting information from
+	 *
+	 * @return string
+	 *		^	This will return what was used as the indent.
+	 *
+	 *	@author NoremacSkich | 2014/12/10
+	 *
+	 */
+	public string indentString(string line){
+			// First lets get rid of all leading whitespaces
+		string noWhite = line.TrimStart();
 		
-		return line.Split('\t').Length - 1;
+		// Now find out how many characters are left
+		int charLeft = noWhite.Length;
+		
+		// Now find the starting position of the text
+		int starting = line.Length - charLeft;
+		
+		// Then lets get all the indententation for the current line
+		return line.Substring(0, starting);
 	}
+		
+		// Then lets get the indent from the line by finding out 
+		// where the noWhite string starts in the original string.
+	
 	
 	/**@fun Run()
 	 *  	^	This will generate the whole function documentation, and will insert 
@@ -190,7 +201,7 @@ public class Script : NppScript{
 		// Then lets get the indent level for the current line
 		indentCount = indentLevel( line );
 		
-		string indent = new String('\t', indentCount );
+		string indent = indentString( line );
 				
 		// Now we need the function signature
 		string documentation = indent;
@@ -202,21 +213,26 @@ public class Script : NppScript{
 		documentation += genParam(line);
 
 		// Next the author
-		documentation += getAuthor();
+		documentation += getAuthor(false);
 		
-		// Tie off hte end of the documentation
-		documentation += " */";
+		// Tie off the end of the documentation
+		documentation += " */" ;
 		
 		// Indent everything to the correct indent level
-		documentation = documentation.Replace("\r\n", ("\r\n" + indent) );
+		documentation = documentation.Replace(Environment.NewLine, (Environment.NewLine + indent) );
+		
+		// To space out the documentation, we will insert a new line at the
+		// beginning of the documentation
+		documentation = Environment.NewLine + documentation;
+		
+		// And one at the end of the documentation.
+		documentation += Environment.NewLine;
 		
 		// Move the cursor to the line before the function call
-		MoveToLine( GetCaretLine() - 1 );
+		MoveToLine( GetCaretLine() );
 		
 		// Insert the Documentation block
 		printLine(documentation);
-		
-		
 		
     }
 
@@ -224,6 +240,11 @@ public class Script : NppScript{
 	 *  	^	This will insert the author line at the current cursor position.
 	 *  	N	This will also replace any selected text
 	 * 
+	 *@param owner | bool
+	 *	^	This indicates if I am the author.
+	 *	TD	Will return my name and the current date
+	 *	F	Will return ?? for the author, and ?? for the date
+	 *
 	 * @return | String
 	 *  	^	This is the string with the author information
 	 *  	E	 * @author NoremacSkich | 2014/10/01
@@ -232,25 +253,33 @@ public class Script : NppScript{
 	 * @modified NoremacSkich | 2014/10/09
 	 * 
 	 */
-	public string getAuthor(){
+	public string getAuthor(bool owner = true){
 		// Create the date type
 		DateTime currentDate = new DateTime();
 		
 		// Get the current date
 		currentDate = DateTime.Now;
 		
-		// Convert the date into the YYYY/MM/DD format
-		string finalDate = currentDate.ToString("yyyy/MM/dd");
+		// If I am the owner, then return the following.
+		if(owner){
 		
-		// Get the author information
-		string author = "NoremacSkich";
+			// Convert the date into the YYYY/MM/DD format
+			string finalDate = currentDate.ToString("yyyy/MM/dd");
+			
+			// Get the author information
+			string author = "NoremacSkich";
 
-		// Put it all together in the author line
-        string dateTime = " *	@author " + author + " | " + finalDate + Environment.NewLine;
-        
-		dateTime += " * " + Environment.NewLine;
+			// Put it all together in the author line
+			string dateTime = " *	@author " + author + " | " + finalDate + Environment.NewLine;
+			
+			dateTime += " * " + Environment.NewLine;
+			
+			return dateTime;
+			
+		}else{
 		
-		return dateTime;
+			return " *	@author ?? | ??" + Environment.NewLine;
+		}
 		
 	}
 	

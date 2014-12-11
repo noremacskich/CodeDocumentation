@@ -1,19 +1,33 @@
-Moving cursor to lines and Function Documentation.
-
-Created:
-1	Notepad++Implementation.cs : int MoveToLine(int line)
-
-Reasons:
-1	This will move the cursor to the designated line number.
+Indentation & Goal Update
 
 ---------
 
 Modified:
-1	Notepad++Implementation.cs : run()
-2	Notepad++Implementation.cs 
-
+1	CodingColors.html : CSS
+2	CodingColors.html : Goal
+3	CodingColors.html
+4	readme.txt
+5	Notepad++Imple~.cs : Run()
 
 Reasons:
-1	Indentation is fixed.  Now inserts the documentation on the line before
-	the start of the function.
-2	Added documentation to all functions.
+1	Made the font monospaced.  Made the background 40em wide.
+2	Updated the goal of the project to include a bit more flowery language.
+3	Reordered the way that the properties are ordered to be more consistent
+	with how I use them.
+4	Added how to use the working script that is provided.
+5	Updated it to handle the new way of handling indentation level.
+
+---------
+
+Created:
+1	Notepadd++Implementation.cs : public string indentString(string line)
+
+Reasons:
+1	This will make sure that the documentation is indented at the correct level.
+
+
+Removed:
+1	Notepad++Imple~.cs : public int indentLevel(string line)
+
+Reasons:
+1	replaced the function with one that returns all the spacing for the function.

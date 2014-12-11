@@ -3,11 +3,12 @@
 	<title>Noremac's Code Documentation Style</title>
 	<style>
 		* {
-			font-size: 13px;
+			font-family: monospace;
 		}
 		body {
 			background: black;
 			color: grey;
+			width: 40em;
 		}
 		.attr {
 			color: #00b050;
@@ -66,9 +67,12 @@
 <body>
 <article>
 <section>
-	<h3>Goal:</h3>
+	<h1>Goal:</h1>
 	<p>The goal of this Documentation style is to provide a consistent 
-	documentation style that can be used across all computer languages.
+	documentation style that can be used across all computer languages.  It
+	should act as bridge between old and new programmers, teaching the new
+	the kinds of things that can happen, and reminding the old the fundamentals
+	of programming design.
 	</p>
 </section>
 
@@ -99,20 +103,20 @@
 <section>
 	<h3>Color Definitions</h3>
 	<ol>
-		<li class="attr     "  >@Attribute</li>
-		<li class="description">Description</li>
-		<li class="varName"    >Variable Name</li>
-		<li class="varType"    >Variable Type</li>
-		<li class="optional"   >Optional</li>
-		<li class="strFormat"  >String Format (F)</li>
-		<li class="strExample" >String Example (E)</li>
-		<li class="defaultVal" >Default Value (D)</li>
-		<li class="attrNote"   >Attribute Note (N)</li>
-		<li class="date"       >Date</li>
-		<li class="gitName"    >&lt;Git Username&gt;</li>
-		<li class="errorCause" >Cause of Error (C)</li>
-		<li class="errorFix"   >How to fix the Error (F)</li>
-		<li class="fpvProtection">Function / Parameter / Variable Protection Status</li>
+		<li class="attr"          >@Attribute</li>
+		<li class="description"   >Description</li>
+		<li class="varName"       >Variable Name</li>
+		<li class="varType"       >Variable Type</li>
+		<li class="optional"      >Optional</li>
+		<li class="strFormat"     >String Format (F)</li>
+		<li class="strExample"    >String Example (E)</li>
+		<li class="defaultVal"    >Default Value (D)</li>
+		<li class="attrNote"      >Attribute Note (N)</li>
+		<li class="date"          >Date</li>
+		<li class="gitName"       >&lt;Git Username&gt;</li>
+		<li class="errorCause"    >Cause of Error (C)</li>
+		<li class="errorFix"      >How to fix the Error (F)</li>
+		<li class="fpvProtection" >Function / Parameter / Variable Protection Status</li>
 	</ol>
 </section>
 
@@ -122,33 +126,6 @@
  * 	^	<a class="description">Short description of what the function does.</a>
  *	^	<a class="description">@fun is short for @function</a>
  *
- * <a class="attr">@auth </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
- *	^	<a class="description">This holds the author of this function as well as the function</a>
- *		<a class="description">creation date.</a>
- *	^	<a class="description">@auth is short for @author</a>
- *
- * <a class="attr">@mod </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
- *	^	<a class="description">This will hold who last modified the function and the date it</a>
- *		<a class="description">was modified.</a>
- *	^	<a class="description">@mod is short for @modified.</a>
- *
- * <a class="attr">@src </a><a class="gitName"> Shortened URL | <a class="date">Date</a>
- *	^	<a class="description">This point to the website that this function is copied from</a>
- *	^	<a class="description">This URL must not be an AD based shortener</a>
- *	^	<a class="description">The date represents when you accessed the website</a>
- *	^	<a class="description">The @auth attribute must include any identifier of the author</a>
- *		<a class="description">and the date the page was published on.  This does not need</a>
- *		<a class="description">need to have a github username.  You use the same date that</a>
- *		<a class="description">the article was written for the @auth date</a>
- *
- * <a class="attr">@preqs </a>
- *	^	<a class="description">This is where the requirements, assumptions, and prerequisites</a>
- *		<a class="description">are stated for this function.</a>
- *	^	<a class="description">Each requirement, assumption, and perrequisite needs to be on</a>
- *		<a class="description">it's own line.</a>
- *	^	<a class="description">@preqs is short for @prerequisites</a>
- *	^	<a class="description">Assumptions for this function must be stated here</a>
- * 
  * <a class="attr">@param </a><a class="varName">$var </a> <a class="varType">| Var Type</a> <a class="optional">(| Optional)</a>
  * 	^	<a class="description">What does this variable represent?</a>
  *	^	<a class="description">If you exceed 80 characters on a line, go to the next line,</a>
@@ -192,12 +169,6 @@
  *			<a class="defaultVal">isn't defined)</a>
  *		<a class="attrNote">(N	This is a special note about this element in the array.)</a>
  *
- * <a class="attr">@error </a>&lt;Error Name&gt; <a class="varType">| Error Type</a>
- *	^	<a class="description">Description</a>
- *	<a class="errorCause">C	What caused this error?</a>
- *	<a class="errorFix">F	In this case, the F is short for fix, or what you can do to fix this </a>
- *		<a class="errorFix">error.</a>
- * 	
  * <a class="attr">@return </a><a class="varType">(Var Type)</a>
  *	^	<a class="description">This is optional.</a>
  *	<a class="strFormat">(F	This is the format of the output string you expect for the function.)</a>
@@ -205,14 +176,56 @@
  * 	<a class="defaultVal">(D	"This is the default return value, if it's a string, use double </a>
  *		<a class="defaultVal">quotes.")</a>
  *	<a class="attrNote">(N	This is a special note about the return type.)</a>
- * 
- * 
+ *
+ * <a class="attr">@error </a>&lt;Error Name&gt; <a class="varType">| Error Type</a>
+ *	^	<a class="description">This is optional</a>
+ *	^	<a class="description">Description</a>
+ *	<a class="errorCause">C	What caused this error?</a>
+ *	<a class="errorFix">F	In this case, the F is short for fix, or what you can do to fix this </a>
+ *		<a class="errorFix">error.</a>
+ *
  * <a class="attr">@return </a><a class="varType">Bool</a>
  *	<a class="true">T	This is what true means</a>
  *	<a class="false">F	This is what false means</a>
  * 	<a class="defaultVal">(D	Put the D after the default return value (the F or T))</a>
  *	<a class="attrNote">(N	This is a special note about this parameter.)</a>
- * 
+ *
+ * <a class="attr">@auth </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
+ *	^	<a class="description">This holds the author of this function as well as the function</a>
+ *		<a class="description">creation date.</a>
+ *	^	<a class="description">@auth is short for @author</a>
+ *
+ * <a class="attr">@mod </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
+ *	^	<a class="description">This will hold who last modified the function and the date it</a>
+ *		<a class="description">was modified.</a>
+ *	^	<a class="description">@mod is short for @modified.</a>
+ *
+ * <a class="attr">@src </a><a class="gitName"> Shortened URL | <a class="date">Date</a>
+ *	^	<a class="description">This point to the website that this function is copied from</a>
+ *	^	<a class="description">This URL must not be an AD based shortener</a>
+ *	^	<a class="description">The date represents when you accessed the website</a>
+ *	^	<a class="description">The @auth attribute must include any identifier of the author</a>
+ *		<a class="description">and the date the page was published on.  This does not need</a>
+ *		<a class="description">need to have a github username.  You use the same date that</a>
+ *		<a class="description">the article was written for the @auth date</a>
+ *
+ * <a class="attr">@preqs </a>
+ *	^	<a class="description">This is where the requirements, assumptions, and prerequisites</a>
+ *		<a class="description">are stated for this function.</a>
+ *	^	<a class="description">Each requirement, assumption, and perrequisite needs to be on</a>
+ *		<a class="description">it's own line.</a>
+ *	^	<a class="description">@preqs is short for @prerequisites</a>
+ *	^	<a class="description">Assumptions for this function must be stated here</a>
+
+ * <a class="attr">@license </a><a class="">License Shorthand</a> | <a class="date">copyright date</a> | <a class="">Project Name (Project Version)</a>
+ *	^	<a class="description">This is optional, but it is highly recommended to have a license.</a>
+ *	^	<a class="description">A license must be assigned to the function if there is one specified</a>
+ *		<a class="description">for the project.</a>
+ *	^	<a class="description">If this is a cited function, you must include the original license</a>
+ *	^	<a class="description">Date should be formatted as YYYY-MM-DD, as stated in RFC 3339 section</a>
+ *		<a class="description">5.6 full-date definition.</a>
+ *	<a class="attrNote">(N	This is a special note about the license agreement.)</a>
+ * 	
  * <a class="attr">@note </a><a class="gitName">&lt;github username&gt;</a> | <a class="date">Date</a>
  *	^	<a class="description">What did you want to note about this file? </a>
  *	^	<a class="description">separate ideas should be in separate notes. </a>
