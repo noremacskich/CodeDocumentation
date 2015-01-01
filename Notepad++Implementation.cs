@@ -55,6 +55,13 @@ public class Script : NppScript{
 		// This should become the parameter list
 		string parameters = getParameters( line );
 		
+		// Check to see if you have any parameters;
+		if(parameters == String.Empty){
+			
+			// If not, return a blank string.
+			return "";
+		}
+		
 		// Split up the parameters based on the comma
 		string [] paramArray = parameters.Split(new Char[] {','});
 		
@@ -89,7 +96,7 @@ public class Script : NppScript{
 				
 			}else{
 				
-				// Assume the first one is refering to parameter type
+				// Assume the first one is referring to parameter type
 				paramType = paramSplit[0];
 				
 				// And that the second one is the variable name
@@ -205,7 +212,7 @@ public class Script : NppScript{
 		documentation += genParam(line);
 
 		// Next the author
-		documentation += getAuthor(false);
+		documentation += getAuthor(true);
 		
 		// Tie off the end of the documentation
 		documentation += " */" ;
@@ -366,6 +373,19 @@ public class Script : NppScript{
 		string trueField = "";
 		string falseField = "";
 		
+		string description = "";
+		
+
+		// Get some predefined descriptions
+		if(paramName.ToLower().Equals("sender")  && paramType.ToLower().Equals("object" ) ){
+			description = "This references the object that triggered this event.";
+		}else if(paramName.ToLower().Equals("e") && paramType.ToLower().Equals("eventargs")){
+			description = "This holds data in regarding the event.";
+		}
+		
+		
+		
+		
 		switch (paramType){
 			case "bool":
 				// Convert into the full Name
@@ -410,7 +430,7 @@ public class Script : NppScript{
 		}
 		
 		paramLine       = " *	@param " + paramName + " | " + paramType + optionalString + Environment.NewLine;
-		descriptionLine = " *		^	" + Environment.NewLine;
+		descriptionLine = " *		^	" + description + Environment.NewLine;
 		//spacer          = " *" + Environment.NewLine;
 		defaultLine     = " *		D	" + defaultValue + Environment.NewLine;
 		//spacer          = " *" + Environment.NewLine;

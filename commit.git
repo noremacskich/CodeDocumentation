@@ -1,13 +1,37 @@
-Parameter and Return Update
+Parameter, Predefined Terms, and Indent count cleanup
+
+---------
+
+Created:
+1	CodingColors.html : Predefined Terms
+
+Reasons:
+1	These are terms that are needed 
+
+---------
+
+Removed:
+1	Notepad++Imple~.cs : public int indentLevel(string line)
+
+Reasons:
+1	replaced the function with one that returns all the spacing for the function.
+
 
 ---------
 
 Modified:
-1	Notepad++Imple~.cs
-2	Notepad++Imple~.cs : public string generateBasicParameter(string paramName, string paramType, bool optionalParam)
-3	Notepad++Imple~.cs : public string generateBasicReturn(string returnType)
+1	public string genParam(string line)
+2	public string generateBasicParameter(string paramName, string paramType, bool optionalParam)
+3	public string generateBasicReturn()
+4	public string getAuthor(bool owner = true)
+5	public override void Run()
+6	public class Script : NppScript
 
 Reasons:
-1	Removed the global variable for the indent level.  Removed the reference from run() function.
-2	Added a switch statement to handle various types of parameters.  
-3	Added a returnType parameter.  
+1	Now doesn't print out a blank parameter if the function doesn't have one.
+2	Added a switch to convert the partial name of parameter type to the full
+	name of the parameter type.  (works with basic types).  Added the 
+	true/false lines to the description if this parameter is a boolean.
+3	Added the return type parameter. This denotes the return type for the function.
+4	Added an empty line after the author attribute.
+5-6	Removed the indent count ( now is taken care of with the indentString(string line) function)
