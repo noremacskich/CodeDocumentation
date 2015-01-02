@@ -2,7 +2,91 @@ using System;
 using System.Text;
 using NppScripts;
 
+/**@class editor | Public
+ *		^	This class will hold any functions related to the text editor.
+ *
+ *	@auth NoremacSkich | 2014/1/1
+ *
+ */
+public class editor {
+
+	/**@fun int GetCaretLine()
+	 *  	^	This will get the current line number that the cursor is on.
+	 * 
+	 *	@return  | Integer
+	 *		^	This will return the current line number that the cursor is on.
+	 *
+	 *	@author NoremacSkich | 2014/10/09
+	 * 
+	 */
+	public int GetCaretLine(){
+		var sci = Npp.CurrentScintilla;
+		int currentPos = (int)Win32.SendMessage(sci, SciMsg.SCI_GETCURRENTPOS, 0, 0);
+		return (int)Win32.SendMessage(sci, SciMsg.SCI_LINEFROMPOSITION, currentPos, 0);
+	}
+	
+	/**@fun public void printLine(string line)
+	 *  	^	This will insert the input where the cursor is.
+	 * 
+	 *	@param line | string
+	 *		^	This is the input that will be put where the current cursor.
+	 *
+	 *	@author NoremacSkich | 2014/10/09
+	 * 
+	 */
+	public void printLine(string line){
+		// Find the current cursor placement, replace the selection with the
+		// dateTime string
+		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, line);
+	}
+
+	/**@fun public void MoveToLine(int line)
+	 *  	^	This will move the cursor to the designated line number.
+	 * 
+	 *	@param line | int
+	 *		^	This is the line number that you wish to jump to
+	 *
+	 *	@author rally25rs | 2012/03/20
+	 *	@src	http://goo.gl/XbVRL1 | 2014/11/19
+	 *
+	 *	@mod	NoremacSkich | 2014/11/19
+	 * 
+	 */	
+	public void MoveToLine(int line){
+		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_GOTOLINE, line, 0);
+	}
+
+	/**@fun GetLine(int line)
+	 *  	^	This will grab the contents of the provided line number.
+	 * 
+	 * @param line | Integer
+	 *  	^	This is the line number to grab the contents from
+	 * 
+	 * @return | String
+	 *  	^	This will return the line contents
+	 * 
+	 * @author NoremacSkich | 2014/10/01
+	 *
+	 */
+	public string GetLine(int line){
+		IntPtr sci = Npp.CurrentScintilla;
+		
+		int length = (int)Win32.SendMessage(sci, SciMsg.SCI_LINELENGTH, line, 0);
+		var buffer = new StringBuilder(length + 1);
+		Win32.SendMessage(sci, SciMsg.SCI_GETLINE, line, buffer);
+		buffer.Length = length;        //NPP may inject some rubbish at the end of the line
+		return buffer.ToString();
+		
+    }
+	
+
+
+}
+
 public class Script : NppScript{
+	
+	editor text = new editor();
+	
 	
 	/**@fun public string parseFunctionSignature(string line)
 	 *  	^	This is the workhorse for creating the documentation
@@ -109,53 +193,8 @@ public class Script : NppScript{
 		return documentation;
 	}
 	
-	/**@fun int GetCaretLine()
-	 *  	^	This will get the current line number that the cursor is on.
-	 * 
-	 *	@return  | Integer
-	 *		^	This will return the current line number that the cursor is on.
-	 *
-	 *	@author NoremacSkich | 2014/10/09
-	 * 
-	 */
-	int GetCaretLine(){
-        var sci = Npp.CurrentScintilla;
-        int currentPos = (int)Win32.SendMessage(sci, SciMsg.SCI_GETCURRENTPOS, 0, 0);
-        return (int)Win32.SendMessage(sci, SciMsg.SCI_LINEFROMPOSITION, currentPos, 0);
-    }
 	
-	/**@fun public void printLine(string line)
-	 *  	^	This will insert the input where the cursor is.
-	 * 
-	 *	@param line | string
-	 *		^	This is the input that will be put where the current cursor.
-	 *
-	 *	@author NoremacSkich | 2014/10/09
-	 * 
-	 */
-	public void printLine(string line){
-		// Find the current cursor placement, replace the selection with the
-		// dateTime string
-		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_REPLACESEL, 0, line);
-	}
-
-	/**@fun public void MoveToLine(int line)
-	 *  	^	This will move the cursor to the designated line number.
-	 * 
-	 *	@param line | int
-	 *		^	This is the line number that you wish to jump to
-	 *
-	 *	@author rally25rs | 2012/03/20
-	 *	@src	http://goo.gl/XbVRL1 | 2014/11/19
-	 *
-	 *	@mod	NoremacSkich | 2014/11/19
-	 * 
-	 */	
-	public void MoveToLine(int line)
-	{
-		Win32.SendMessage(Npp.CurrentScintilla, SciMsg.SCI_GOTOLINE, line, 0);
-	}
-
+	
 	/**@fun public string indentString(string line)
 	 *  	^	This will grab the indentation for the line
 	 * 
@@ -198,7 +237,7 @@ public class Script : NppScript{
 		//int lineNum= 30;
 		
 		// First lets get the line we want to parse
-		string line = GetLine( GetCaretLine() );
+		string line = text.GetLine( text.GetCaretLine() );
 		
 		string indent = indentString( line );
 				
@@ -228,10 +267,10 @@ public class Script : NppScript{
 		documentation += Environment.NewLine;
 		
 		// Move the cursor to the line before the function call
-		MoveToLine( GetCaretLine() );
+		text.MoveToLine( text.GetCaretLine() );
 		
 		// Insert the Documentation block
-		printLine(documentation);
+		text.printLine(documentation);
 		
     }
 
@@ -507,27 +546,7 @@ public class Script : NppScript{
 		return returnString; 
 	}
 	
-	/**@fun GetLine(int line)
-	 *  	^	This will grab the contents of the provided line number.
-	 * 
-	 * @param line | Integer
-	 *  	^	This is the line number to grab the contents from
-	 * 
-	 * @return | String
-	 *  	^	This will return the line contents
-	 * 
-	 * @author NoremacSkich | 2014/10/01
-	 *
-	 */
-	string GetLine(int line){
-		IntPtr sci = Npp.CurrentScintilla;
-		
-		int length = (int)Win32.SendMessage(sci, SciMsg.SCI_LINELENGTH, line, 0);
-		var buffer = new StringBuilder(length + 1);
-		Win32.SendMessage(sci, SciMsg.SCI_GETLINE, line, buffer);
-		buffer.Length = length;        //NPP may inject some rubbish at the end of the line
-		return buffer.ToString();
-    }
+
 	
 	/**@fun getParameters(string parameterList)
 	 *  	^	This will check for parameters the parameter list, and will return 
@@ -561,7 +580,7 @@ public class Script : NppScript{
 		if(string.IsNullOrWhiteSpace(parameterList)){
 		
 			// The string is null or has whitspaces, return an empty string
-			printLine("WhiteSpace");
+			text.printLine("WhiteSpace");
 			return String.Empty;
 		}
 		
@@ -569,7 +588,7 @@ public class Script : NppScript{
 		// of the parameter list is within the provided string
 		if(!parameterList.Contains(parameterStart) && !parameterList.Contains(parameterEnd)){
 			
-			printLine("no " + parameterStart + " " + parameterEnd);
+			text.printLine("no " + parameterStart + " " + parameterEnd);
 			// Then this has no parameters, return an empty string
 			return String.Empty;
 		}
@@ -613,7 +632,7 @@ public class Script : NppScript{
 			// Throws ArgumentOutOfRangeException if startParamList + endParamList 
 			// is longer than the string 
 			// Or if either startParamList or EndParamList are less than zero
-			printLine("out of range " + startParamList + " " + (endParamList - startParamList));
+			text.printLine("out of range " + startParamList + " " + (endParamList - startParamList));
 		}
 		//printLine(fullParamList);
 		// We can now return the parameter list

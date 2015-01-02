@@ -1,37 +1,26 @@
-Parameter, Predefined Terms, and Indent count cleanup
-
----------
+Grouped Editor Functions in editor class
 
 Created:
-1	CodingColors.html : Predefined Terms
+1	public class editor
 
 Reasons:
-1	These are terms that are needed 
+1	This will hold any functions related to the text editor.
 
 ---------
 
-Removed:
-1	Notepad++Imple~.cs : public int indentLevel(string line)
+Moved:
+1	string GetLine(int line)
+2	public void printLine(string line)
+3	public void MoveToLine(int line)
+4	public int GetCaretLine()
 
 Reasons:
-1	replaced the function with one that returns all the spacing for the function.
+1	I grouped it with the other functions that provide similar functions.
 
-
----------
+----------
 
 Modified:
-1	public string genParam(string line)
-2	public string generateBasicParameter(string paramName, string paramType, bool optionalParam)
-3	public string generateBasicReturn()
-4	public string getAuthor(bool owner = true)
-5	public override void Run()
-6	public class Script : NppScript
+1	Notepad++Implementation.cs
 
 Reasons:
-1	Now doesn't print out a blank parameter if the function doesn't have one.
-2	Added a switch to convert the partial name of parameter type to the full
-	name of the parameter type.  (works with basic types).  Added the 
-	true/false lines to the description if this parameter is a boolean.
-3	Added the return type parameter. This denotes the return type for the function.
-4	Added an empty line after the author attribute.
-5-6	Removed the indent count ( now is taken care of with the indentString(string line) function)
+1	Modified all functions to take into consideration the new class.
